@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
 import './Styling/index.css';
-import LandingPage from './Pages/LandingPage';
+import RouterPage from './Pages/RouterPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <LandingPage />
+    <BrowserRouter>
+      <RouterPage />
+    </BrowserRouter>
   </React.StrictMode>
 );
 
