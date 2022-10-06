@@ -1,5 +1,5 @@
 // import fontAwesome from "//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css";'
-import { useNavigate, Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../Styling/LandingPage.css";
 
 function LandingPage() {
