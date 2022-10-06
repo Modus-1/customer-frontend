@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './Styling/index.css';
 import App from './Pages/App';
-import LandingPage from './Pages/App copy'; './Pages/LandingPage';
+import LandingPage from './Pages/LandingPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
