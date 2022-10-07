@@ -1,30 +1,42 @@
+import { useState } from "react";
 import "../Styling/MenuPage.css";
+import ResponsiveAppBar from "../Components/CategoryTopBar";
 
 function RenderMenuItems() {
-  const menuItems = [
+  const [menuItems, setMenuItems] = useState([
     {
       id: "1",
       name: "Nasi",
+      description: "lol",
     },
     {
       id: "2",
       name: "Bami",
+      description: "lol",
     },
     {
       id: "3",
       name: "Mihoen",
+      description: "lol",
     },
     {
       id: "4",
-      name: "Pabi Pangang",
+      name: "Babi Pangang",
+      description: "lol",
     },
-  ];
+    {
+      id: "5",
+      name: "Stokbrood",
+      description: "lol",
+    },
+  ]);
 
   const itemList = menuItems.map((item) => {
     return (
-      <ul className="Card">
+      <ul className="MenuCard">
         <li>{item.id}</li>
         <li>{item.name}</li>
+        <li>{item.description}</li>
       </ul>
     );
   });
@@ -35,10 +47,9 @@ function RenderMenuItems() {
 function MenuPage() {
   return (
     <div>
-      <div>
-        <h1 className="Header">Menu Page</h1>
-        <RenderMenuItems />
-      </div>
+      <h1 className="Header">Menu Page</h1>
+      <ResponsiveAppBar />
+      <RenderMenuItems />
     </div>
   );
 }
