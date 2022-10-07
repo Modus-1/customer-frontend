@@ -2,6 +2,10 @@
   font-family: "raleway";
 }
 
+.Header {
+  align-items: center;
+}
+
 .Card {
   height: 5vh;
   width: 20vw;
