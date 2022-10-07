@@ -1,6 +1,6 @@
 function ErrorPage() {
   return (
-    <div>Sorry That page does not exsist</div>
+    <div>Sorry, that page does not exist</div>
   )
 }
 
