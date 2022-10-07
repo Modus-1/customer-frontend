@@ -36,7 +36,7 @@ function MenuPage() {
   return (
     <div>
       <div>
-        <h1>Menu Page</h1>
+        <h1 className="Header">Menu Page</h1>
         <RenderMenuItems />
       </div>
     </div>
