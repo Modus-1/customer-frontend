@@ -4,7 +4,7 @@ import ErrorPage from "./ErrorPage";
 
 function RouterPage() {
   return (
-    <div>
+    <div className="FullPage">
       <Routes>
         <Route path="/" element=<LandingPage />></Route>
         <Route path="/Home" element=<LandingPage />></Route>

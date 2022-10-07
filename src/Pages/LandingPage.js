@@ -8,7 +8,7 @@ function LandingPage() {
     navigate("/Error");
   };
   return (
-    <div>
+    <div className="Page">
       <div className="Card">
         <h2 className="Header"> Welcome to the Landing page!</h2>
         <button className="qr-button" onClick={RedirectToErrorTemp}>
