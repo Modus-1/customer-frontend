@@ -1,0 +1,14 @@
+* {
+  font-family: "raleway";
+}
+
+.Card {
+  height: 5vh;
+  width: 20vw;
+  background-color: aquamarine;
+  border: 3px solid aqua;
+  border-radius: 10px;
+  margin: auto;
+  margin-top: 5vh;
+  align-items: center;
+}

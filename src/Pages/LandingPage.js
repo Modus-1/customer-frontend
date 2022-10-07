@@ -4,14 +4,14 @@ import "../Styling/LandingPage.css";
 
 function LandingPage() {
   let navigate = useNavigate();
-  const RedirectToErrorTemp = () => {
-    navigate("/Error");
+  const RedirectToMenuTemp = () => {
+    navigate("/Menu");
   };
   return (
     <div>
       <div className="Card">
         <h2 className="Header"> Welcome to the Landing page!</h2>
-        <button className="qr-button" onClick={RedirectToErrorTemp}>
+        <button className="qr-button" onClick={RedirectToMenuTemp}>
           Scan QR code
         </button>
       </div>
