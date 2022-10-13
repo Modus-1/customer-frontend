@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, useCallback } from "react";
+import { useEffect, useState, useRef } from "react";
 import "../Styling/MenuPage.css";
 import ResponsiveAppBar from "../Components/CategoryTopBar";
 import MenuItem from "../Components/MenuItem";
@@ -48,7 +48,7 @@ function MenuPage() {
   useEffect(() => {
     GetMenuItems();
     menuRef.current = menuItems;
-  }, []);
+  }, [menuItems]);
 
   async function GetMenuItems() {
     var menustuff = await getAllMenuItems();
