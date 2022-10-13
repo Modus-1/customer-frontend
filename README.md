@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+[![MODUS](https://img.shields.io/badge/MODUS-ASSUMPTION-orange)](MODUS ASSUMPTION)
+
+# Getting Started with the Customer Frontend
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
