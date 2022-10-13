@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "../Styling/MenuPage.css";
 import ResponsiveAppBar from "../Components/CategoryTopBar";
+import MenuItem from "../Components/MenuItem";
 
 function RenderMenuItems() {
   const [menuItems, setMenuItems] = useState([
@@ -32,22 +33,15 @@ function RenderMenuItems() {
   ]);
 
   const itemList = menuItems.map((item) => {
-    return (
-      <ul className="MenuCard">
-        <li>{item.id}</li>
-        <li>{item.name}</li>
-        <li>{item.description}</li>
-      </ul>
-    );
+    return <MenuItem dish={item} />;
   });
-
+  console.log(menuItems);
   return <div>{itemList}</div>;
 }
 
 function MenuPage() {
   return (
     <div>
-      {/* <h1 className="Header">Menu Page</h1> */}
       <ResponsiveAppBar />
       <RenderMenuItems />
     </div>
