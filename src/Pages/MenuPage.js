@@ -47,7 +47,7 @@ function RenderMenuItems() {
 function MenuPage() {
   return (
     <div>
-      <h1 className="Header">Menu Page</h1>
+      {/* <h1 className="Header">Menu Page</h1> */}
       <ResponsiveAppBar />
       <RenderMenuItems />
     </div>
