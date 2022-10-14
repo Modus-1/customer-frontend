@@ -8,7 +8,7 @@ function OrderItemCard(orderItem) {
                 {orderItem.item.name}
             </div>
             <div className="rv-order-details">
-                <strong>{orderItem.totalPriceString}</strong>
+                <strong>{orderItem.item.totalPriceString}</strong>
                 <div className="controls">
                     <button className="rv-order-details-btn">&minus;</button>
                     <div className="rv-order-details-amount">{orderItem.item.amount}</div>
