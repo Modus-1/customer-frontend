@@ -51,15 +51,13 @@ function MenuPage() {
   }, [menuItems]);
 
   async function GetMenuItems() {
-    var menustuff = await getAllMenuItems();
-    //console.log(menustuff);
+    let menustuff = await getAllMenuItems();
     setMenuItems(menustuff);
   }
 
   return (
     <div>
       <ResponsiveAppBar />
-      {/* <RenderMenuItems /> */}
       {menuRef.current.map((item) => (
         <MenuItem key={item.id} dish={item} />
       ))}
