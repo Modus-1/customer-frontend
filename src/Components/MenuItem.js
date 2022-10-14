@@ -1,14 +1,15 @@
 import "../Styling/MenuPage.css";
 
 function MenuItem(dish) {
+  const { id, name, shortDescription, longDescription } = dish.dish;
   const foodItem = dish.dish;
   console.log(dish);
   return (
     <ul className="MenuCard">
-      <li>{foodItem.id}</li>
-      <li>{foodItem.name}</li>
-      <li>{foodItem.shortDescription}</li>
-      <li>{foodItem.longDescription}</li>
+      <li>{id}</li>
+      <li>{name}</li>
+      <li>{shortDescription}</li>
+      <li>{longDescription}</li>
     </ul>
   );
 }
