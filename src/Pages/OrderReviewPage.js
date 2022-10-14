@@ -1,6 +1,8 @@
 import "../Styling/OrderReviewPage.css"
 import ResponsiveAppBar from "../Components/CategoryTopBar";
 import OrderItemCard from "../Components/OrderItemCard"
+import { useState, useRef, useEffect } from "react";
+import { getOptionsFromChildren } from "@mui/base";
 
 class Order {
     constructor(orderItems) {
@@ -15,38 +17,84 @@ class OrderItem {
         this.amount = amount;
         this.pricePer = pricePer;
         this.totalPrice = Math.round(100* (amount * pricePer)) / 100;
-        this.totalPriceString = (Intl.NumberFormat('nl-NL', {style: "currency", currency: "EUR"}).format(this.totalPrice));
+        this.totalPriceString = this.getTotalPriceString();
+    }
+
+    setAmount(amount) { 
+        this.amount = amount 
+        this.updateTotalPrice()
+    }
+
+    updateTotalPrice() {
+        this.totalPrice = Math.round(100* (this.amount * this.pricePer)) / 100
+    }
+    
+    getTotalPriceString() { 
+        return (Intl.NumberFormat('nl-NL', {style: "currency", currency: "EUR"}).format(this.totalPrice)) 
     }
 }
 
 function OrderReviewPage() {
-    
-    const orderItems = [
+    console.log("Render Page")
+
+    let data = new Order([
         new OrderItem(1, "Aardappel", 1, 0.69),
         new OrderItem(2, "Peer", 12, 0.42),
         new OrderItem(3, "Banaan", 69, 0.74),
         new OrderItem(4, "Ligma", 73, 0.73),
         new OrderItem(5, "Goblin", 12, 0.11),
-    ]
+    ])
 
-    const order = new Order(orderItems)
+    /*
+        De hoofddata moet aangepast worden door op de + en - te klikken 
+        in de OrderItemCard componenten.
+        Dit moet zichtbaar zijn in de UI wanneer er op die knoppen
+        gedrukt wordt. Dit werkt momenteel niet. 
+    */
 
-    const orderItemCards = []
+    const orderRef = useRef([])
+    const [order, setOrder] = useState({orderItems: []})
 
-    order.orderItems.forEach((orderItem, index) => {
-        orderItemCards.push(
-            <OrderItemCard key={orderItem.id} item={orderItem}/>
-        )
-    });
+    useEffect(() => { 
+        orderRef.current = data  
+    }, [order])
+
+    const add = (id) => {
+        
+        orderRef.current.orderItems.map(item => {
+            if (item.id == id) {
+                item.setAmount(item.amount + 1)
+                console.log("add")                
+                console.log(orderRef.current)
+            }
+        })
+    }
+
+    const subtract = (id) => {
+        orderRef.current.orderItems.map(item => {
+            if (item.id == id) {
+                item.setAmount(item.amount - 1)
+                console.log("subtract")
+                console.log(orderRef.current)
+            }
+        })
+    }
 
     return (
-        <div>
+        <div ref={setOrder}>
             <ResponsiveAppBar />
             <div className="rv-main-contents">            
                 <div className="rv-order-review-container">
                     <h3><strong>Bevestig order</strong></h3>
                     <div className="rv-all-orders-items-container">
-                        {orderItemCards}
+                        {orderRef.current.orderItems?.map(item => (
+                            <OrderItemCard 
+                                key={item.id}
+                                item={item} 
+                                add={()=>add(item.id)}
+                                subtract={()=>subtract(item.id)}
+                            />
+                        ))}
                     </div>
                     <button className="rv-order-pay-btn">Betalen</button>
                 </div>

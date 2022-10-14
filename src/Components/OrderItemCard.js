@@ -1,6 +1,9 @@
 import "../Styling/OrderItemCard.css"
+import { useState, useRef, useEffect } from "react";
+
 
 function OrderItemCard(orderItem) {
+    console.log("Render OrderItem: " + orderItem.item.name)
 
     return(
         <div className="rv-order-item-card">
@@ -10,9 +13,9 @@ function OrderItemCard(orderItem) {
             <div className="rv-order-details">
                 <strong>{orderItem.item.totalPriceString}</strong>
                 <div className="controls">
-                    <button className="rv-order-details-btn">&minus;</button>
+                    <button onClick={orderItem.subtract} className="rv-order-details-btn">&minus;</button>
                     <div className="rv-order-details-amount">{orderItem.item.amount}</div>
-                    <button className="rv-order-details-btn">&#43;</button>
+                    <button onClick={orderItem.add} className="rv-order-details-btn">&#43;</button>
                 </div>                
             </div>
         </div>
