@@ -2,6 +2,10 @@ import { render, screen, cleanup } from "@testing-library/react";
 import MenuItem from "../Components/MenuItem";
 import "@testing-library/jest-dom";
 
+afterEach(() => {
+  cleanup();
+});
+
 test("should render menu component", () => {
   const menuItem = {
     id: "1",
