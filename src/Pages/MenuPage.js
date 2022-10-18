@@ -3,7 +3,6 @@ import "../Styling/MenuPage.css";
 import CategoryTopBar from "../Components/CategoryTopBar";
 import MenuItem from "../Components/MenuItem";
 import { getAllMenuItems } from "../Components/Services";
-import "../Styling/MenuPage.css"
 
 function MenuPage() {
   const [menuItems, setMenuItems] = useState([]);
@@ -24,12 +23,11 @@ function MenuPage() {
     <div>
       <CategoryTopBar />
       <div className="main-contents">
-          <div className="menu-items-container">
-
-              {menuRef.current.map((item) => (
-                  <MenuItem key={item.id} dish={item} />
-              ))}
-          </div>
+        <div className="menu-items-container">
+          {menuRef.current.map((item) => (
+            <MenuItem key={item.id} dish={item} />
+          ))}
+        </div>
       </div>
     </div>
   );
