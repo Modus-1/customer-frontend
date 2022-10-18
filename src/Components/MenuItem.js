@@ -7,6 +7,7 @@ function MenuItem(dish) {
         <div className="card-image">
             <img
                 src={iconUrl}
+                alt="A short presentation of a menu item dish."
             />
         </div>
         <div className="card-description">
