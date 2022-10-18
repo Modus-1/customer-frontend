@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import "../Styling/MenuPage.css";
-import ResponsiveAppBar from "../Components/CategoryTopBar";
+import CategoryTopBar from "../Components/CategoryTopBar";
 import MenuItem from "../Components/MenuItem";
 import { getAllMenuItems } from "../Components/Services";
 import "../Styling/MenuPage.css"
@@ -22,7 +22,7 @@ function MenuPage() {
 
   return (
     <div>
-      <ResponsiveAppBar />
+      <CategoryTopBar />
       <div className="main-contents">
           <div className="menu-items-container">
 

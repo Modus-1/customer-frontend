@@ -1,21 +1,21 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "../Styling/ScanQrButton.css";
+import "../Styling/LandingPageLoginButton.css";
 
-function ScanQrButton() {
+function LandingPageLoginButton() {
   let navigate = useNavigate();
   const RedirectToMenuTemp = () => {
     navigate("/Menu");
   };
   return (
     <button
-      className="qr-button"
+      className="lp-login-btn"
       onClick={RedirectToMenuTemp}
-      data-testid="qrButton"
+      data-testid="lpLoginButton"
     >
-      Scan QR code
+      Login
     </button>
   );
 }
 
-export default ScanQrButton;
+export default LandingPageLoginButton;
