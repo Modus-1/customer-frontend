@@ -7,8 +7,8 @@
 }
 
 .MenuCard {
-  height: 7vh;
-  width: 20vw;
+  height: max-content;
+  width: max-content;
   background-color: aquamarine;
   border: 3px solid aqua;
   border-radius: 10px;
