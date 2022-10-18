@@ -11,7 +11,6 @@ test("should render menu component", () => {
     id: "1",
     name: "Nasi",
     shortDescription: "lol",
-    longDescription: "troll",
     fakeNews: "Donald Trump",
   };
   render(<MenuItem dish={menuItem} />);
@@ -19,6 +18,5 @@ test("should render menu component", () => {
   expect(menuItemElement).toBeInTheDocument();
   expect(menuItemElement).toHaveTextContent(menuItem.name);
   expect(menuItemElement).toHaveTextContent(menuItem.shortDescription);
-  expect(menuItemElement).toHaveTextContent(menuItem.longDescription);
   expect(menuItemElement).not.toHaveTextContent(menuItem.fakeNews);
 });
