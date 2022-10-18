@@ -1,14 +1,21 @@
 import "../Styling/LandingPage.css";
-import ScanQrButton from "../Components/ScanQrButton";
+import LandingPageLoginButton from "../Components/LandingPageLoginButton";
 
 function LandingPage() {
   return (
-    <div>
-      <div className="Card">
-        <h2 className="Header"> Welcome to the Landing page!</h2>
-        <ScanQrButton />
+
+      <div className="lp-main-contents">
+          <div className="lp-logo">
+            <img src="./assets/logo-modus.png" alt="Logo" />
+          </div>
+          <h1 className="lp-welcome-header">Welcome!</h1>
+          <div className="lp-input-container">
+              <label>Passcode:</label>
+              <input className="lp-passcode-input" disabled />
+          </div>
+          <LandingPageLoginButton />
       </div>
-    </div>
+
   );
 }
 

@@ -6,14 +6,14 @@ jest.mock("react-router-dom", () => ({
 
 import React from "react";
 import "@testing-library/jest-dom";
-import ScanQrButton from "../Components/ScanQrButton";
+import LandingPageLoginButton from "../Components/LandingPageLoginButton";
 import { render, screen } from "@testing-library/react";
 import { click } from "@testing-library/user-event/dist/click";
 
 test("The landing page correctly leads to menu page", () => {
   const RedirectToMenuTemp = jest.fn();
-  render(<ScanQrButton />);
-  const qrButton = screen.getByTestId(`qrButton`);
-  click(qrButton);
+  render(<LandingPageLoginButton />);
+  const lpLoginButton = screen.getByTestId(`lpLoginButton`);
+  click(lpLoginButton);
   expect(RedirectToMenuTemp).toHaveBeenCalled;
 });

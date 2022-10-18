@@ -11,5 +11,5 @@ import { render, screen } from "@testing-library/react";
 
 test("The landing page displays the correct info", () => {
   render(<LandingPage />);
-  expect(screen.getByText("Welcome to the Landing page!")).toBeInTheDocument();
+  expect(screen.getByText("Welcome!")).toBeInTheDocument();
 });

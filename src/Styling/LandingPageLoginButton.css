@@ -1,0 +1,30 @@
+* {
+  font-family: Helvetica, sans-serif;
+}
+
+:root {
+
+  --blue: rgb(14, 154, 230);
+  --gray: rgba(0, 0, 0, .1);
+  --dark-gray: rgba(0, 0, 0, .15)
+
+}
+
+.lp-login-btn {
+
+  width: calc(100% / 3);
+  height: 3em;
+
+  align-self: center;
+
+  background-color: var(--gray);
+  border: none;
+  border-radius: 0.25em;
+
+}
+
+.lp-login-btn:hover {
+
+  background-color: var(--dark-gray);
+
+}
