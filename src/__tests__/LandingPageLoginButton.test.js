@@ -13,7 +13,7 @@ import { click } from "@testing-library/user-event/dist/click";
 test("The landing page correctly leads to menu page", () => {
   const RedirectToMenuTemp = jest.fn();
   render(<LandingPageLoginButton />);
-  const qrButton = screen.getByTestId(`qrButton`);
-  click(qrButton);
+  const lpLoginButton = screen.getByTestId(`lpLoginButton`);
+  click(lpLoginButton);
   expect(RedirectToMenuTemp).toHaveBeenCalled;
 });
