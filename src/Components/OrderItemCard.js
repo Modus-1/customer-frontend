@@ -1,5 +1,4 @@
 import "../Styling/OrderItemCard.css"
-import { useState, useRef, useEffect } from "react";
 
 
 function OrderItemCard(orderItem) {

@@ -2,7 +2,6 @@ import "../Styling/OrderReviewPage.css"
 import ResponsiveAppBar from "../Components/CategoryTopBar";
 import OrderItemCard from "../Components/OrderItemCard"
 import { useState, useRef, useEffect } from "react";
-import { getOptionsFromChildren } from "@mui/base";
 
 class Order {
     constructor(orderItems) {
@@ -37,14 +36,6 @@ class OrderItem {
 function OrderReviewPage() {
     console.log("Render Page")
 
-    let data = new Order([
-        new OrderItem(1, "Aardappel", 1, 0.69),
-        new OrderItem(2, "Peer", 12, 0.42),
-        new OrderItem(3, "Banaan", 69, 0.74),
-        new OrderItem(4, "Ligma", 73, 0.73),
-        new OrderItem(5, "Goblin", 12, 0.11),
-    ])
-
     /*
         De hoofddata moet aangepast worden door op de + en - te klikken 
         in de OrderItemCard componenten.
@@ -55,28 +46,38 @@ function OrderReviewPage() {
     const orderRef = useRef([])
     const [order, setOrder] = useState({orderItems: []})
 
-    useEffect(() => { 
-        orderRef.current = data  
+    useEffect(() => {
+        orderRef.current = new Order([
+            new OrderItem(1, "Aardappel", 1, 0.69),
+            new OrderItem(2, "Peer", 12, 0.42),
+            new OrderItem(3, "Banaan", 69, 0.74),
+            new OrderItem(4, "Ligma", 73, 0.73),
+            new OrderItem(5, "Goblin", 12, 0.11),
+        ])
     }, [order])
 
     const add = (id) => {
         
         orderRef.current.orderItems.map(item => {
-            if (item.id == id) {
+            if (item.id === id) {
                 item.setAmount(item.amount + 1)
                 console.log("add")                
                 console.log(orderRef.current)
             }
+
+            return 0;
         })
     }
 
     const subtract = (id) => {
         orderRef.current.orderItems.map(item => {
-            if (item.id == id) {
+            if (item.id === id) {
                 item.setAmount(item.amount - 1)
                 console.log("subtract")
                 console.log(orderRef.current)
             }
+
+            return 0;
         })
     }
 
