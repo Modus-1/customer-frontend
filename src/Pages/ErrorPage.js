@@ -1,7 +1,8 @@
+import "../Styling/ErrorPage.css";
 function ErrorPage() {
   return (
-    <div>Sorry, that page does not exist</div>
-  )
+    <div className="ErrorMessage">Nah mate, it broke. Idk what to tell ya</div>
+  );
 }
 
-export default ErrorPage
+export default ErrorPage;
