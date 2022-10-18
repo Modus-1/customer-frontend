@@ -1,14 +1,26 @@
-import "../Styling/MenuPage.css";
+import "../Styling/MenuItem.css";
 
 function MenuItem(dish) {
-  const { id, name, shortDescription, longDescription } = dish.dish;
+  const { id, name, iconUrl, shortDescription, price } = dish.dish;
   return (
-    <ul className="MenuCard" data-testid={`mItem-${id}`}>
-      <li>{id}</li>
-      <li>{name}</li>
-      <li>{shortDescription}</li>
-      <li>{longDescription}</li>
-    </ul>
+    <div className="menu-card" data-testid={`mItem-${id}`}>
+        <div className="card-image">
+            <img
+                src={iconUrl}
+                alt={`Image of ${name}`}
+            />
+        </div>
+        <div className="card-description">
+            <strong className="title">{name}</strong>
+            <span className="description">{shortDescription}</span>
+        </div>
+        <div className="card-controls">
+            <div className="price">
+                {Intl.NumberFormat('nl-NL', {style: "currency", currency: "EUR"}).format(price)}
+            </div>
+            <button className="add-btn">&#43;</button>
+        </div>
+    </div>
   );
 }
 

@@ -3,6 +3,7 @@ import "../Styling/MenuPage.css";
 import ResponsiveAppBar from "../Components/CategoryTopBar";
 import MenuItem from "../Components/MenuItem";
 import { getAllMenuItems } from "../Components/Services";
+import "../Styling/MenuPage.css"
 
 function MenuPage() {
   const [menuItems, setMenuItems] = useState([]);
@@ -22,9 +23,14 @@ function MenuPage() {
   return (
     <div>
       <ResponsiveAppBar />
-      {menuRef.current.map((item) => (
-        <MenuItem key={item.id} dish={item} />
-      ))}
+      <div className="main-contents">
+          <div className="menu-items-container">
+
+              {menuRef.current.map((item) => (
+                  <MenuItem key={item.id} dish={item} />
+              ))}
+          </div>
+      </div>
     </div>
   );
 }
