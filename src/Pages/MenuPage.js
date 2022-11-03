@@ -11,12 +11,12 @@ function MenuPage() {
 
   useEffect(() => {
     GetMenuItems();
-    menuRef.current = menuItems;
-  }, [menuItems]);
+  }, []);
 
   async function GetMenuItems() {
     let menustuff = await getAllMenuItems();
     setMenuItems(menustuff);
+    menuRef.current = menustuff;
   }
 
   return (
