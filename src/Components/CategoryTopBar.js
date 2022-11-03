@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../Styling/CategoryTopBar.css";
 
 function CategoryTopBar() {
   const [categories, setCategories] = useState([
@@ -20,7 +21,7 @@ function CategoryTopBar() {
     <div className="tb-main-content">
       {categories.map((category) => (
         <div className="tb-category" key={category.id}>
-          category.name
+          {category.name}
         </div>
       ))}
     </div>
