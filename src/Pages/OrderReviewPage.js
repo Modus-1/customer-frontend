@@ -102,13 +102,12 @@ function OrderReviewPage() {
             const order = await createOrder(orderItems);
             // Bring user to order wait page
             // Here they can track the status of their order or if something happened
-            // The order ID will be stored in sessionStorage so that the status page can pick it up
             // The status page will fetch the order state again from ID so we can also ensure the order is still valid.
-            sessionStorage["activeOrder"] = order.id;
+            // The Order ID is passed to the query so that historical orders can be viewed again later.
 
             // we do a little debug timer
             setTimeout(()=> {
-                window.location.href = "/status";
+                window.location.href = `/status?orderId=${order.id}`;
             }, 2000);
         } catch(e) {
             alert(`Failed to place order: ${e}`);

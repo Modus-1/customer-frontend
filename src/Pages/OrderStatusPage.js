@@ -7,7 +7,7 @@ function OrderStatusPage() {
 
     // Get order ID from session storage so we can resume
     // Also create a websocket connection so we can poll for potential events
-    const orderId = sessionStorage["activeOrder"];
+    const orderId = new URLSearchParams(window.location.search).get('orderId');
 
     isValidOrder(orderId).then((value) => {
         if(!value) {
