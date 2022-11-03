@@ -52,16 +52,20 @@ function OrderReviewPage() {
   const selectedItems = useContext(CheckoutContext).selectedItems;
 
   useEffect(() => {
+    GetOrderItems();
+  }, [selectedItems]);
+
+  function GetOrderItems() {
     let orderItemList = [];
     for (let i = 0; i < selectedItems.length; i++) {
       let itemExists = false;
-      // for loop in een for loop OwO
-      for (let j = 0; j < orderItemList.length; j++) {
-        if (selectedItems[i].id == orderItemList[j].id) {
+
+      orderItemList.map((item) => {
+        if (item.id == selectedItems[i].id) {
           itemExists = true;
-          orderItemList[j].amount++;
+          item.amount++;
         }
-      }
+      });
 
       if (itemExists == false) {
         let orderItem = new OrderItem(
@@ -79,7 +83,7 @@ function OrderReviewPage() {
     const order = new Order(orderItemList);
     orderRef.current = order;
     setOrder(order);
-  }, [selectedItems]);
+  }
 
   const add = (id) => {
     orderRef.current.orderItems.map((item) => {
