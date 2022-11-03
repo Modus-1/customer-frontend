@@ -1,7 +1,8 @@
-import "../Styling/OrderReviewPage.css"
+import "../Styling/OrderReviewPage.css";
 import ResponsiveAppBar from "../Components/CategoryTopBar";
 import OrderItemCard from "../Components/OrderItemCard"
 import { useState, useRef, useEffect } from "react";
+import { createOrder } from "../Components/OrderServices";
 
 class Order {
     constructor(orderItems) {
@@ -81,6 +82,39 @@ function OrderReviewPage() {
         })
     }
 
+    /**
+     * Processes the order.
+     */
+    async function processOrder() {
+        // Disable payment button to indicate processing
+        const orderButton = document.querySelector(".rv-order-pay-btn");
+        orderButton.disabled = true;
+
+        const orderItems = orderRef.current.orderItems;
+
+        if(!orderItems) {
+            orderButton.disabled = false;
+            return;
+        }
+
+        // Put the order
+        try {
+            const order = await createOrder(orderItems);
+            // Bring user to order wait page
+            // Here they can track the status of their order or if something happened
+            // The order ID will be stored in sessionStorage so that the status page can pick it up
+            // The status page will fetch the order state again from ID so we can also ensure the order is still valid.
+            sessionStorage["activeOrder"] = order.id;
+
+            // we do a little debug timer
+            setTimeout(()=> {
+                window.location.href = "/status";
+            }, 2000);
+        } catch(e) {
+            alert(`Failed to place order: ${e}`);
+        }
+    }
+
     return (
         <div ref={setOrder}>
             <ResponsiveAppBar />
@@ -97,7 +131,7 @@ function OrderReviewPage() {
                             />
                         ))}
                     </div>
-                    <button className="rv-order-pay-btn">Betalen</button>
+                    <button className="rv-order-pay-btn" onClick={processOrder}>Betalen</button>
                 </div>
             </div>
         </div>

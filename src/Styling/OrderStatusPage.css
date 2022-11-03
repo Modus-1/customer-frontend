@@ -1,0 +1,31 @@
+#root>div>.content {
+    display: flex;
+    flex-direction: column;
+}
+
+html, body, #root, #root>div, .content {
+    height: 100%;
+}
+
+.main {
+    margin-left: 7%;
+    margin-right: 7%;
+    height: 100%;
+    flex: 1;
+    display: flex;
+}
+
+.main>.stat-container {
+    margin: auto;
+}
+
+.main>.stat-container>.title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.main>.stat-container>.subtitle {
+    margin-top: 2em;
+    font-size: 18px;
+    text-align: center;
+}
