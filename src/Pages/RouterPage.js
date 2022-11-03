@@ -10,19 +10,39 @@ function RouterPage() {
   const [selectedItems, setSelectedItems] = useState([]);
 
   useEffect(() => {
+    setSelectedItems(GetOrder());
+  }, []);
+
+  function GetOrder() {
     //Gets the current order from the local storage
     const orderItemString = localStorage.getItem("order");
     if (orderItemString != null) {
-      setSelectedItems(JSON.parse(orderItemString));
+      const obj = JSON.parse(orderItemString);
+      return obj;
     }
-  }, []);
-
+  }
   function AddMenuItemToOrder(dish) {
-    let tempItems = selectedItems;
-    tempItems.push(dish);
-    setSelectedItems(tempItems);
-    console.log(tempItems);
-    localStorage.setItem("order", JSON.stringify(tempItems));
+    let itemList = GetOrder();
+    let doesItemExist = false;
+    if (itemList != null) {
+      itemList.map((item) => {
+        if (item.id == dish.id) {
+          item.count++;
+          doesItemExist = true;
+          console.log();
+        }
+      });
+    } else {
+      itemList = [];
+    }
+
+    if (!doesItemExist) {
+      itemList.push({ id: dish.id, count: 1 });
+    }
+
+    setSelectedItems(itemList);
+    console.log(itemList);
+    localStorage.setItem("order", JSON.stringify(itemList));
   }
 
   return (

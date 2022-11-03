@@ -4,6 +4,7 @@ import OrderItemCard from "../Components/OrderItemCard";
 import { useState, useRef, useEffect } from "react";
 import { CheckoutContext } from "./RouterPage";
 import { useContext } from "react";
+import { getMenuItemByID } from "../Components/Services";
 class Order {
   constructor(orderItems) {
     this.orderItems = orderItems;
@@ -49,48 +50,42 @@ function OrderReviewPage() {
 
   const orderRef = useRef([]);
   const [order, setOrder] = useState({ orderItems: [] });
-  const selectedItems = useContext(CheckoutContext).selectedItems;
+  const selectedItemIds = useContext(CheckoutContext).selectedItems;
+  const AddMenuItemToOrder = useContext(CheckoutContext).AddMenuItemToOrder;
+  const [orderItems, setOrderItems] = useState([]);
 
   useEffect(() => {
     GetOrderItems();
-  }, [selectedItems]);
+  }, [selectedItemIds]);
 
-  function GetOrderItems() {
-    let orderItemList = [];
-    for (let i = 0; i < selectedItems.length; i++) {
-      let itemExists = false;
-
-      orderItemList.map((item) => {
-        if (item.id == selectedItems[i].id) {
-          itemExists = true;
-          item.amount++;
-        }
-      });
-
-      if (itemExists == false) {
-        let orderItem = new OrderItem(
-          selectedItems[i].id,
-          selectedItems[i].name,
-          1,
-          selectedItems[i].price
-        );
-
-        orderItemList.push(orderItem);
-      }
+  async function GetOrderItems() {
+    let itemList = [];
+    for (let i = 0; i < selectedItemIds.length; i++) {
+      const item = await getMenuItemByID(selectedItemIds[i].id);
+      const orderItem = new OrderItem(
+        item.id,
+        item.name,
+        selectedItemIds[i].count,
+        item.price
+      );
+      itemList.push(orderItem);
     }
 
-    console.log(orderItemList);
-    const order = new Order(orderItemList);
+    console.log(itemList);
+    const order = new Order(itemList);
+    updateOrderList(order);
+  }
+
+  function updateOrderList(order) {
     orderRef.current = order;
-    setOrder(order);
+    setOrder({ orderItems: { order } });
   }
 
   const add = (id) => {
     orderRef.current.orderItems.map((item) => {
       if (item.id === id) {
-        item.setAmount(item.amount + 1);
-        console.log("add");
-        console.log(orderRef.current);
+        AddMenuItemToOrder(item);
+        updateOrderList(orderRef.current);
       }
       return 0;
     });
@@ -102,6 +97,7 @@ function OrderReviewPage() {
         item.setAmount(item.amount - 1);
         console.log("subtract");
         console.log(orderRef.current);
+        updateOrderList(orderRef.current);
       }
 
       return 0;

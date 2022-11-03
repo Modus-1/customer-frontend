@@ -5,4 +5,9 @@ async function getAllMenuItems() {
   return await response.data;
 }
 
-export { getAllMenuItems };
+async function getMenuItemByID(id) {
+  const response = await axios.get("https://localhost:7286/api/MenuItem/" + id);
+  return await response.data;
+}
+
+export { getAllMenuItems, getMenuItemByID };
