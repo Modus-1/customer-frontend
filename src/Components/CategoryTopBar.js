@@ -2,7 +2,7 @@ import { useState } from "react";
 import "../Styling/CategoryTopBar.css";
 
 function CategoryTopBar() {
-  const [categories, setCategories] = useState([
+  const [categories] = useState([
     {
       id: 1,
       name: "Placeholder 1",
