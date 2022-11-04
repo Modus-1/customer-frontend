@@ -1,9 +1,10 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import LandingPage from "./LandingPage";
 import ErrorPage from "./ErrorPage";
 import MenuPage from "./MenuPage";
 import OrderReviewPage from "./OrderReviewPage";
+
 export const CheckoutContext = React.createContext(null);
 
 function RouterPage() {
@@ -28,13 +29,15 @@ function RouterPage() {
     let itemList = GetOrder();
     if (itemList != null) {
       itemList.map((item) => {
-        if (item.id == dish.id) {
+        if (item.id === dish.id) {
           item.count--;
           if (item.count < 1) {
             const index = itemList.indexOf(item);
             itemList.splice(index, 1);
           }
         }
+
+        return null;
       });
     } else {
       itemList = [];
@@ -48,10 +51,11 @@ function RouterPage() {
     let doesItemExist = false;
     if (itemList != null) {
       itemList.map((item) => {
-        if (item.id == dish.id) {
+        if (item.id === dish.id) {
           item.count++;
           doesItemExist = true;
         }
+        return null;
       });
     } else {
       itemList = [];

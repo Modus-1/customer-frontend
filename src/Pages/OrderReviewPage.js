@@ -1,7 +1,7 @@
 import "../Styling/OrderReviewPage.css";
 import ResponsiveAppBar from "../Components/CategoryTopBar";
 import OrderItemCard from "../Components/OrderItemCard";
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { CheckoutContext } from "./RouterPage";
 import { useContext } from "react";
 import { getMenuItemByID } from "../Components/Services";
@@ -54,18 +54,14 @@ function OrderReviewPage() {
     useContext(CheckoutContext).SubtractItemFromOrder;
 
   useEffect(() => {
-    console.log("running update");
-
     if (order.orderItems.length < 1 /* Should run only the first time */) {
       GetOrderItems();
     } else {
-      console.log(order);
       UpdateCount();
     }
   }, [selectedItemIds]);
 
   async function GetOrderItems() {
-    console.log("Alleen eerste keer sukkel");
     let itemList = [];
     for (let i = 0; i < selectedItemIds.length; i++) {
       const item = await getMenuItemByID(selectedItemIds[i].id);
@@ -87,7 +83,7 @@ function OrderReviewPage() {
     tempOrder.orderItems.map((item) => {
       let itemStillExists = false;
       for (let i = 0; i < selectedItemIds.length; i++) {
-        if (item.id == selectedItemIds[i].id) {
+        if (item.id === selectedItemIds[i].id) {
           item.setAmount(selectedItemIds[i].count);
           itemStillExists = true;
         }
@@ -97,6 +93,7 @@ function OrderReviewPage() {
         const index = tempOrder.orderItems.indexOf(item);
         tempOrder.orderItems.splice(index, 1);
       }
+      return null;
     });
 
     setOrder({ orderItems: tempOrder.orderItems });
@@ -107,6 +104,7 @@ function OrderReviewPage() {
       if (item.id === id) {
         AddMenuItemToOrder(item);
       }
+      return null;
     });
   }
 
@@ -115,6 +113,7 @@ function OrderReviewPage() {
       if (item.id === id) {
         SubtractItemFromOrder(item);
       }
+      return null;
     });
   }
 
