@@ -1,9 +1,8 @@
 import "../Styling/OrderReviewPage.css";
 import ResponsiveAppBar from "../Components/CategoryTopBar";
 import OrderItemCard from "../Components/OrderItemCard";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { CheckoutContext } from "../Components/OrderReviewContext";
-import { useContext } from "react";
 import { getMenuItemByID } from "../Components/Services";
 class Order {
   constructor(orderItems) {
