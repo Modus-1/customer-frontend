@@ -28,6 +28,7 @@ class OrderItem {
 
   updateTotalPrice() {
     this.totalPrice = Math.round(100 * (this.amount * this.pricePer)) / 100;
+    this.totalPriceString = this.getTotalPriceString();
   }
 
   getTotalPriceString() {
@@ -39,8 +40,6 @@ class OrderItem {
 }
 
 function OrderReviewPage() {
-  console.log("Render Page");
-
   /*
         De hoofddata moet aangepast worden door op de + en - te klikken 
         in de OrderItemCard componenten.
@@ -48,17 +47,25 @@ function OrderReviewPage() {
         gedrukt wordt. Dit werkt momenteel niet. 
     */
 
-  const orderRef = useRef([]);
   const [order, setOrder] = useState({ orderItems: [] });
   const selectedItemIds = useContext(CheckoutContext).selectedItems;
   const AddMenuItemToOrder = useContext(CheckoutContext).AddMenuItemToOrder;
-  const [orderItems, setOrderItems] = useState([]);
+  const SubtractItemFromOrder =
+    useContext(CheckoutContext).SubtractItemFromOrder;
 
   useEffect(() => {
-    GetOrderItems();
+    console.log("running update");
+
+    if (order.orderItems.length < 1 /* Should run only the first time */) {
+      GetOrderItems();
+    } else {
+      console.log(order);
+      UpdateCount();
+    }
   }, [selectedItemIds]);
 
   async function GetOrderItems() {
+    console.log("Alleen eerste keer sukkel");
     let itemList = [];
     for (let i = 0; i < selectedItemIds.length; i++) {
       const item = await getMenuItemByID(selectedItemIds[i].id);
@@ -71,41 +78,48 @@ function OrderReviewPage() {
       itemList.push(orderItem);
     }
 
-    console.log(itemList);
     const order = new Order(itemList);
-    updateOrderList(order);
+    setOrder(order);
   }
 
-  function updateOrderList(order) {
-    orderRef.current = order;
-    setOrder({ orderItems: { order } });
+  function UpdateCount() {
+    let tempOrder = order;
+    tempOrder.orderItems.map((item) => {
+      let itemStillExists = false;
+      for (let i = 0; i < selectedItemIds.length; i++) {
+        if (item.id == selectedItemIds[i].id) {
+          item.setAmount(selectedItemIds[i].count);
+          itemStillExists = true;
+        }
+      }
+
+      if (!itemStillExists) {
+        const index = tempOrder.orderItems.indexOf(item);
+        tempOrder.orderItems.splice(index, 1);
+      }
+    });
+
+    setOrder({ orderItems: tempOrder.orderItems });
   }
 
-  const add = (id) => {
-    orderRef.current.orderItems.map((item) => {
+  function add(id) {
+    order.orderItems.map((item) => {
       if (item.id === id) {
         AddMenuItemToOrder(item);
-        updateOrderList(orderRef.current);
       }
-      return 0;
     });
-  };
+  }
 
-  const subtract = (id) => {
-    orderRef.current.orderItems.map((item) => {
+  function subtract(id) {
+    order.orderItems.map((item) => {
       if (item.id === id) {
-        item.setAmount(item.amount - 1);
-        console.log("subtract");
-        console.log(orderRef.current);
-        updateOrderList(orderRef.current);
+        SubtractItemFromOrder(item);
       }
-
-      return 0;
     });
-  };
+  }
 
   return (
-    <div ref={setOrder}>
+    <div>
       <ResponsiveAppBar />
       <div className="rv-main-contents">
         <div className="rv-order-review-container">
@@ -113,7 +127,7 @@ function OrderReviewPage() {
             <strong>Bevestig order</strong>
           </h3>
           <div className="rv-all-orders-items-container">
-            {orderRef.current.orderItems?.map((item, index) => (
+            {order.orderItems?.map((item, index) => (
               <OrderItemCard
                 key={index}
                 item={item}

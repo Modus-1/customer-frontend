@@ -19,8 +19,30 @@ function RouterPage() {
     if (orderItemString != null) {
       const obj = JSON.parse(orderItemString);
       return obj;
+    } else {
+      return [];
     }
   }
+
+  function SubtractItemFromOrder(dish) {
+    let itemList = GetOrder();
+    if (itemList != null) {
+      itemList.map((item) => {
+        if (item.id == dish.id) {
+          item.count--;
+          if (item.count < 1) {
+            const index = itemList.indexOf(item);
+            itemList.splice(index, 1);
+          }
+        }
+      });
+    } else {
+      itemList = [];
+    }
+    setSelectedItems(itemList);
+    localStorage.setItem("order", JSON.stringify(itemList));
+  }
+
   function AddMenuItemToOrder(dish) {
     let itemList = GetOrder();
     let doesItemExist = false;
@@ -29,7 +51,6 @@ function RouterPage() {
         if (item.id == dish.id) {
           item.count++;
           doesItemExist = true;
-          console.log();
         }
       });
     } else {
@@ -39,15 +60,15 @@ function RouterPage() {
     if (!doesItemExist) {
       itemList.push({ id: dish.id, count: 1 });
     }
-
     setSelectedItems(itemList);
-    console.log(itemList);
     localStorage.setItem("order", JSON.stringify(itemList));
   }
 
   return (
     <div>
-      <CheckoutContext.Provider value={{ selectedItems, AddMenuItemToOrder }}>
+      <CheckoutContext.Provider
+        value={{ selectedItems, AddMenuItemToOrder, SubtractItemFromOrder }}
+      >
         <Routes>
           <Route path="/" element=<LandingPage />></Route>
           <Route path="/Home" element=<LandingPage />></Route>
