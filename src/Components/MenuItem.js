@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import "../Styling/MenuItem.css";
-import { CheckoutContext } from "../Pages/RouterPage";
+import { CheckoutContext } from "../Components/OrderReviewContext";
 
 function MenuItem(dish) {
   const addMenuItem = useContext(CheckoutContext).AddMenuItemToOrder;

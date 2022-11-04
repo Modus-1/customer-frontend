@@ -2,7 +2,7 @@ import "../Styling/OrderReviewPage.css";
 import ResponsiveAppBar from "../Components/CategoryTopBar";
 import OrderItemCard from "../Components/OrderItemCard";
 import { useState, useEffect } from "react";
-import { CheckoutContext } from "./RouterPage";
+import { CheckoutContext } from "../Components/OrderReviewContext";
 import { useContext } from "react";
 import { getMenuItemByID } from "../Components/Services";
 class Order {
