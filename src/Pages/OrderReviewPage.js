@@ -58,45 +58,46 @@ function OrderReviewPage() {
     } else {
       UpdateCount();
     }
-  }, [selectedItemIds]);
+    async function GetOrderItems() {
+      let itemList = [];
+      for (let i = 0; i < selectedItemIds.length; i++) {
+        const item = await getMenuItemByID(selectedItemIds[i].id);
+        const orderItem = new OrderItem(
+          item.id,
+          item.name,
+          selectedItemIds[i].count,
+          item.price
+        );
+        itemList.push(orderItem);
+      }
 
-  async function GetOrderItems() {
-    let itemList = [];
-    for (let i = 0; i < selectedItemIds.length; i++) {
-      const item = await getMenuItemByID(selectedItemIds[i].id);
-      const orderItem = new OrderItem(
-        item.id,
-        item.name,
-        selectedItemIds[i].count,
-        item.price
-      );
-      itemList.push(orderItem);
+      const order = new Order(itemList);
+      setOrder(order);
     }
 
-    const order = new Order(itemList);
-    setOrder(order);
-  }
-
-  function UpdateCount() {
-    let tempOrder = order;
-    tempOrder.orderItems.map((item) => {
-      let itemStillExists = false;
-      for (let i = 0; i < selectedItemIds.length; i++) {
-        if (item.id === selectedItemIds[i].id) {
-          item.setAmount(selectedItemIds[i].count);
-          itemStillExists = true;
+    function UpdateCount() {
+      let tempOrder = order;
+      tempOrder.orderItems.map((item) => {
+        let itemStillExists = false;
+        for (let i = 0; i < selectedItemIds.length; i++) {
+          if (item.id === selectedItemIds[i].id) {
+            item.setAmount(selectedItemIds[i].count);
+            itemStillExists = true;
+          }
         }
-      }
 
-      if (!itemStillExists) {
-        const index = tempOrder.orderItems.indexOf(item);
-        tempOrder.orderItems.splice(index, 1);
-      }
-      return null;
-    });
+        if (!itemStillExists) {
+          const index = tempOrder.orderItems.indexOf(item);
+          tempOrder.orderItems.splice(index, 1);
+        }
+        return null;
+      });
 
-    setOrder({ orderItems: tempOrder.orderItems });
-  }
+      setOrder({ orderItems: tempOrder.orderItems });
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedItemIds]);
 
   function add(id) {
     order.orderItems.map((item) => {
