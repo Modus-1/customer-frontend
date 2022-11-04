@@ -5,19 +5,23 @@ import MenuPage from "./MenuPage";
 import OrderReviewPage from "./OrderReviewPage";
 import OrderStatusPage from "./OrderStatusPage";
 
+import OrderReviewContext from "../Components/OrderReviewContext";
+
 function RouterPage() {
   return (
     <div>
-      <Routes>
-        <Route path="/" element=<LandingPage />></Route>
-        <Route path="/Home" element=<LandingPage />></Route>
-        <Route path="/LandingPage" element=<LandingPage />></Route>
-        <Route path="/Error" element=<ErrorPage />></Route>
-        <Route path="/Menu" element={<MenuPage />}></Route>
-        <Route path='/review' element=<OrderReviewPage />></Route>
-        <Route path='/status' element=<OrderStatusPage />></Route>
-        <Route path="*" element=<ErrorPage />></Route>
-      </Routes>
+      <OrderReviewContext>
+        <Routes>
+          <Route path="/" element={<LandingPage />}></Route>
+          <Route path="/Home" element={<LandingPage />}></Route>
+          <Route path="/LandingPage" element={<LandingPage />}></Route>
+          <Route path="/Error" element={<ErrorPage />}></Route>
+          <Route path="/Menu" element={<MenuPage />}></Route>
+          <Route path="/review" element={<OrderReviewPage />}></Route>
+          <Route path='/status' element=<OrderStatusPage />></Route>
+          <Route path="*" element={<ErrorPage />}></Route>
+        </Routes>
+      </OrderReviewContext>
     </div>
   );
 }
