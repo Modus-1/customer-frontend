@@ -1,0 +1,20 @@
+.tb-main-content {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  align-items: center;
+
+  min-height: 3em;
+
+  background-color: var(--blue);
+}
+
+.tb-category {
+  background-color: var(--blue);
+
+  border-radius: 0.25em;
+}
+
+.tb-category:hover {
+  filter: brightness(85%);
+}
