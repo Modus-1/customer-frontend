@@ -1,20 +1,21 @@
 .tb-main-content {
   display: flex;
   flex-direction: row;
-  gap: 1em;
-  align-items: center;
-
-  min-height: 3em;
-
+  padding: 5px;
   background-color: var(--blue);
+  color: white;
 }
 
 .tb-category {
   background-color: var(--blue);
-
   border-radius: 0.25em;
+  padding: 10px;
+  margin-right: 10px;
+  cursor: pointer;
 }
 
-.tb-category:hover {
-  filter: brightness(85%);
+.tb-category:hover,
+.tb-category.active {
+  background-color: white;
+  color: var(--blue);
 }
