@@ -10,4 +10,9 @@ async function getMenuItemByID(id) {
   return response.data;
 }
 
-export { getAllMenuItems, getMenuItemByID };
+async function getAllCategories() {
+  const response = await axios.get("https://localhost:7286/api/Category");
+  return response.data;
+}
+
+export { getAllMenuItems, getMenuItemByID, getAllCategories };

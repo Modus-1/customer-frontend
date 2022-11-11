@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../Styling/CategoryTopBar.css";
+import { getAllCategories } from "./Services";
 
 function CategoryTopBar() {
-  const [categories] = useState([
+  const [categories, setCategories] = useState([
     {
       id: 1,
       name: "Placeholder 1",
@@ -16,6 +17,18 @@ function CategoryTopBar() {
       name: "Placeholder 3",
     },
   ]);
+
+  useEffect(() => {
+    GetAllCategories();
+  }, []);
+
+  async function GetAllCategories() {
+    let catstuff = await getAllCategories();
+
+    if (catstuff.length !== 0) {
+      setCategories(catstuff);
+    }
+  }
 
   return (
     <div className="tb-main-content">
