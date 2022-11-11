@@ -17,5 +17,5 @@
 .tb-category:hover,
 .tb-category.active {
   background-color: white;
-  color: var(--blue);
+  color: var(--accent-color);
 }
