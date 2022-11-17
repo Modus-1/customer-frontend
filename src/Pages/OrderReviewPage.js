@@ -1,9 +1,11 @@
 import "../Styling/OrderReviewPage.css";
 import ResponsiveAppBar from "../Components/CategoryTopBar";
 import OrderItemCard from "../Components/OrderItemCard";
-import { useState, useEffect, useContext } from "react";
+import { React, useState, useEffect, useContext } from "react";
 import { CheckoutContext } from "../Components/OrderReviewContext";
 import { getMenuItemByID } from "../Components/Services";
+import Popup from "reactjs-popup";
+
 class Order {
   constructor(orderItems) {
     this.orderItems = orderItems;
@@ -47,6 +49,8 @@ function OrderReviewPage() {
     */
 
   const [order, setOrder] = useState({ orderItems: [] });
+  const [note, setNote] = useState("");
+  const [unacceptedNote, setUnacceptedNote] = useState("");
   const selectedItemIds = useContext(CheckoutContext).selectedItems;
   const AddMenuItemToOrder = useContext(CheckoutContext).AddMenuItemToOrder;
   const SubtractItemFromOrder =
@@ -135,6 +139,44 @@ function OrderReviewPage() {
               />
             ))}
           </div>
+          <Popup
+            trigger={
+              <div className="rv-add-commment-btn">
+                {note.length < 1 && <div>Opmerking toevoegen</div>}
+                {note.length > 0 && <div>Opmerking zien/wijzigen</div>}
+              </div>
+            }
+            modal
+          >
+            {(close) => (
+              <div className="rv-add-commment-container">
+                <textarea
+                  value={unacceptedNote}
+                  onChange={(event) => {
+                    setUnacceptedNote(event.target.value);
+                  }}
+                  className="rv-order-commment-input"
+                ></textarea>
+                <div>
+                  <button
+                    onClick={() => {
+                      setNote(unacceptedNote);
+                      close();
+                    }}
+                  >
+                    Bevestig
+                  </button>
+                  <button
+                    onClick={() => {
+                      close();
+                    }}
+                  >
+                    Annuleer
+                  </button>
+                </div>
+              </div>
+            )}
+          </Popup>
           <button className="rv-order-pay-btn">Betalen</button>
         </div>
       </div>

@@ -2,12 +2,12 @@
   display: flex;
   flex-direction: row;
   padding: 5px;
-  background-color: var(--blue);
+  background-color: var(--accent-color);
   color: white;
 }
 
 .tb-category {
-  background-color: var(--blue);
+  background-color: var(--accent-color);
   border-radius: 0.25em;
   padding: 10px;
   margin-right: 10px;
@@ -17,5 +17,5 @@
 .tb-category:hover,
 .tb-category.active {
   background-color: white;
-  color: var(--blue);
+  color: var(--accent-color);
 }
