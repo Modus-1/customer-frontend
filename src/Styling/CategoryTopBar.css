@@ -8,6 +8,7 @@
 
 .tb-category {
   background-color: var(--accent-color);
+  color: white;
   border: none;
   border-radius: 0.25em;
   padding: 10px;
@@ -16,7 +17,7 @@
 }
 
 .tb-category:hover,
-.tb-category:active {
+.tb-category.active {
   background-color: white;
   color: var(--accent-color);
 }
