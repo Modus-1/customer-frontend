@@ -24,9 +24,6 @@ function LandingPage() {
 
   }, []);
 
-
-
-
   return (
 
       <div className="lp-main-contents">
