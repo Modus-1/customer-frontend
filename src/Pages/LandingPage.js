@@ -1,7 +1,25 @@
 import "../Styling/LandingPage.css";
 import LandingPageLoginButton from "../Components/LandingPageLoginButton";
+import { useEffect } from "react";
 
 function LandingPage() {
+
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const tableNumber = urlParams.get('tableNumber');
+
+    //check if session exists for tableNumber
+
+    //if session does not exist, redirect to menu page and create session
+
+    //if session exists, do not redirect to menu page and wait for user to login
+
+  }, []);
+
+
+
+
   return (
 
       <div className="lp-main-contents">
