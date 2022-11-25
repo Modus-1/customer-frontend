@@ -16,9 +16,4 @@ async function getAllCategories() {
   return response.data;
 }
 
-
-
-
-
-
 export { getAllMenuItems, getMenuItemByID, getAllCategories };
