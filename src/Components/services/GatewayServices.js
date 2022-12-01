@@ -12,7 +12,7 @@ const MODUS_SESSION_TYPE = {
  * @param {MODUS_SESSION_TYPE} type The access type requested.
  * @param {Number} tableNumber The tableNumber to get the session for.
  */
-async function getSession(type = MODUS_SESSION_TYPE.USER, tableNumber) {
+async function getSession(tableNumber, type = MODUS_SESSION_TYPE.USER) {
 
     if (typeof tableNumber !== 'number' || tableNumber <= 0) {
         throw new Error("Invalid table number, expected a number above 0.");

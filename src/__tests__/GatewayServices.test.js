@@ -20,7 +20,7 @@ describe('getSession', () => {
             // Act
         
             // Assert
-            await expect(() => getSession(undefined, tableNumber)).rejects.toThrow();
+            await expect(() => getSession(tableNumber)).rejects.toThrow();
         
         });
 
@@ -32,7 +32,7 @@ describe('getSession', () => {
             // Act
         
             // Assert
-            await expect(() => getSession(undefined, tableNumber)).rejects.toThrow();
+            await expect(() => getSession(tableNumber)).rejects.toThrow();
         
         });
 
@@ -45,8 +45,8 @@ describe('getSession', () => {
             // Act
 
             // Assert
-            await expect(() => getSession(type1, 1)).rejects.toThrow();
-            await expect(() => getSession(type2, 1)).rejects.toThrow();
+            await expect(() => getSession(1, type1)).rejects.toThrow();
+            await expect(() => getSession(1, type2)).rejects.toThrow();
 
         });
 
@@ -58,7 +58,7 @@ describe('getSession', () => {
             // Act
 
             // Assert
-            await expect(() => getSession(undefined, 1)).rejects.toThrow();
+            await expect(() => getSession(1)).rejects.toThrow();
 
         });
 
@@ -81,7 +81,7 @@ describe('getSession', () => {
             axios.post.mockImplementation(() => Promise.resolve({data: expectedResponse, status: 200}));
 
             // Act
-            const response = await getSession(MODUS_SESSION_TYPE.USER, 1);
+            const response = await getSession(1);
 
             // Assert       
             expect(response).toEqual(expectedResponse);
