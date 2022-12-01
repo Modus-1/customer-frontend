@@ -52,5 +52,11 @@
   "moduleDirectories": [
     "node_modules",
     "src"
-  ]
+  ],
+  "jest": {
+    "transformIgnorePatterns": ["<rootDir>/node_modules/(?!axios)/"],
+    "moduleNameMapper": {
+        "'^axios$'": "require.resolve('axios')"
+    }
+  }
 }
