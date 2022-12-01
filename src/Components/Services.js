@@ -2,17 +2,17 @@ import axios from "axios";
 
 // Menu API
 async function getAllMenuItems() {
-  const response = await axios.get("https://localhost:7286/api/MenuItem");
+  const response = await axios.get("/api/menu/MenuItem");
   return response.data;
 }
 
 async function getMenuItemByID(id) {
-  const response = await axios.get("https://localhost:7286/api/MenuItem/" + id);
+  const response = await axios.get("/api/menu/MenuItem/" + id);
   return response.data;
 }
 
 async function getAllCategories() {
-  const response = await axios.get("https://localhost:7286/api/Category");
+  const response = await axios.get("/api/menu/Category");
   return response.data;
 }
 
