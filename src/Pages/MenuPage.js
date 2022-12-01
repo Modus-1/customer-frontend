@@ -47,6 +47,15 @@ function MenuPage() {
           {filteredMenuItems.map((item) => (
             <MenuItem key={item.id} dish={item} />
           ))}
+          <div className="space"></div>
+        </div>
+      </div>
+      <div className="menupage-footer">
+        <div className="basket-image-container">
+          <img src="./assets/basket.svg"></img>
+        </div>
+        <div className="menupage-footer-button-container">
+          <button>BETAAL!</button>
         </div>
       </div>
     </div>

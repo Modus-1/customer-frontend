@@ -4,6 +4,8 @@
   padding: 5px;
   background-color: var(--accent-color);
   color: white;
+  max-width: 100vw;
+  overflow-x:auto;
 }
 
 .tb-category {
@@ -17,7 +19,7 @@
 }
 
 .tb-category:hover,
-.tb-category.active {
+.tb-category:active {
   background-color: white;
   color: var(--accent-color);
 }

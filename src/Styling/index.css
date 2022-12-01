@@ -1,5 +1,6 @@
 :root {
   --accent-color: rgb(23, 143, 255);
+  --accent-color-light: rgb(89, 174, 254);
   --text-color: black;
   --bg-color: white;
   --header-height: 3em;
@@ -7,12 +8,14 @@
   --gray: rgba(0, 0, 0, 0.1);
   --dark-gray: rgba(0, 0, 0, 0.15);
 
-  --card-height: 5.5em;
+  --card-height: 9em;
   --card-padding: 0.5em;
-  --card-radius: 0.25em;
+  --card-radius: 10px;
   --control-width: 5em;
 
   --card-background-color: rgba(0, 0, 0, 0.05);
+
+  --footer-height: 2.5em;
 }
 
 body {
