@@ -3,7 +3,7 @@ import ResponsiveAppBar from "../Components/CategoryTopBar";
 import OrderItemCard from "../Components/OrderItemCard";
 import { React, useState, useEffect, useContext } from "react";
 import { CheckoutContext } from "../Components/OrderReviewContext";
-import { getMenuItemByID } from "../Components/Services";
+import { getMenuItemByID } from "../Components/services/MenuServices";
 import Popup from "reactjs-popup";
 
 class Order {
