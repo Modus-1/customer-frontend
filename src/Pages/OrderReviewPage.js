@@ -55,6 +55,7 @@ function OrderReviewPage() {
   const AddMenuItemToOrder = useContext(CheckoutContext).AddMenuItemToOrder;
   const SubtractItemFromOrder =
     useContext(CheckoutContext).SubtractItemFromOrder;
+  const PeePeePooPoo = 0;
 
   useEffect(() => {
     if (order.orderItems.length < 1 /* Should run only the first time */) {
