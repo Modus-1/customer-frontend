@@ -23,7 +23,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --passWithNoTests",
+    "ci-build": "CI=false && react-scripts build",
+    "test": "react-scripts test",
     "coverage": "react-scripts test --coverage .",
     "eject": "react-scripts eject"
   },
@@ -52,5 +53,11 @@
   "moduleDirectories": [
     "node_modules",
     "src"
-  ]
+  ],
+  "jest": {
+    "transformIgnorePatterns": ["<rootDir>/node_modules/(?!axios)/"],
+    "moduleNameMapper": {
+        "'^axios$'": "require.resolve('axios')"
+    }
+  }
 }
