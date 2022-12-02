@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import "../Styling/CategoryTopBar.css";
-import { getAllCategories } from "./Services";
+import { getAllCategories } from "./services/MenuServices";
 
 function CategoryTopBar(filtermethod) {
   const Filtermthd = filtermethod.filtermethod;
