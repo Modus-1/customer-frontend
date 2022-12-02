@@ -1,5 +1,4 @@
 import "../Styling/OrderReviewPage.css";
-import ResponsiveAppBar from "../Components/CategoryTopBar";
 import OrderItemCard from "../Components/OrderItemCard";
 import { React, useState, useEffect, useContext } from "react";
 import { CheckoutContext } from "../Components/OrderReviewContext";
