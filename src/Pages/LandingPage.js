@@ -31,6 +31,7 @@ function LandingPage() {
         <div className="session-code-input-container">
           <input
             className="session-code-input"
+            data-testid="codeInput"
             maxLength={4}
             value={inputVal}
             onChange={(e) => setInputVal(e.target.value.replace(/\D/, ""))}
