@@ -1,14 +1,14 @@
+import React from "react";
+import "@testing-library/jest-dom";
+import LandingPage from "../Pages/LandingPage";
+import { fireEvent, render, screen } from "@testing-library/react";
+import userEvent from '@testing-library/user-event'
+
 const mockedUsedNavigate = jest.fn();
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
   useNavigate: () => mockedUsedNavigate,
 }));
-
-import React from "react";
-import "@testing-library/jest-dom";
-import LandingPage from "../Pages/LandingPage";
-import { fireEvent, render, screen } from "@testing-library/react";
-import { createMemoryHistory } from "@remix-run/router";
 
 test("The landing page displays the correct info", () => {
   render(<LandingPage />);
@@ -35,11 +35,15 @@ test("Button to be enabled with input", () => {
 });
 
 // TODO: Needs to be fixed
-// test("Button redirects to correct page", () => {
-//   let history = createMemoryHistory({ initialEntries: ["/LandingPage"] });
-//   render(<LandingPage />);
-//   const input = screen.getByTestId("codeInput");
-//   fireEvent.change(input, { target: { value: "1234" } });
-//   fireEvent.click(screen.getByText("Log in"));
-//   expect(history.location.pathname).toBe("/Menu");
-// });
+test("Button redirects to correct page", async () => {
+  render(<LandingPage />);
+
+  const user = userEvent.setup();
+  const input = screen.getByTestId("codeInput");
+
+  fireEvent.change(input, { target: { value: "1234" } });
+  await user.click(screen.getByTestId("button-redir"));
+
+  expect(mockedUsedNavigate).toHaveBeenCalledWith("/Menu");
+  expect(mockedUsedNavigate).toHaveBeenCalledTimes(1);
+});

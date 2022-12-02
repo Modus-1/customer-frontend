@@ -42,6 +42,7 @@ function LandingPage() {
             className="session-code-button"
             onClick={() => navigate("/Menu")}
             disabled={!inputVal}
+            data-testid="button-redir"
           >
             Log in
           </button>

@@ -8,7 +8,7 @@
     "@mui/icons-material": "^5.10.6",
     "@mui/material": "^5.10.8",
     "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/user-event": "^13.5.0",
+    "@testing-library/user-event": "^14.4.3",
     "axios": "^1.1.3",
     "classnames": "^2.3.2",
     "mui": "^0.0.1",
@@ -55,9 +55,11 @@
     "src"
   ],
   "jest": {
-    "transformIgnorePatterns": ["<rootDir>/node_modules/(?!axios)/"],
+    "transformIgnorePatterns": [
+      "<rootDir>/node_modules/(?!axios)/"
+    ],
     "moduleNameMapper": {
-        "'^axios$'": "require.resolve('axios')"
+      "'^axios$'": "require.resolve('axios')"
     }
   }
 }
