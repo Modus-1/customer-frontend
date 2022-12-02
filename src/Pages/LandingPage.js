@@ -1,6 +1,7 @@
 import "../Styling/LandingPage.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { getSession } from "../Components/services/GatewayServices";
 
 function LandingPage() {
   const navigate = useNavigate();
@@ -8,7 +9,14 @@ function LandingPage() {
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const tableNumber = urlParams.get("tableNumber");
-    console.log(tableNumber);
+    const number = Number.parseInt(tableNumber);
+    console.log(number);
+
+    getSession(number).then((response) => {
+      if (response.status === 200) {
+        navigate("/Menu");
+      } 
+    });
 
     //1 check if session exists for tableNumber
     // make request to gateway to check for session related to tableNumber
