@@ -1,7 +1,5 @@
 import "../Styling/LandingPage.css";
-import LandingPageLoginButton from "../Components/LandingPageLoginButton";
 import { useEffect, useState } from "react";
-import { TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 function LandingPage() {
