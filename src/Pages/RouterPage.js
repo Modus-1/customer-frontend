@@ -3,6 +3,7 @@ import LandingPage from "./LandingPage";
 import ErrorPage from "./ErrorPage";
 import MenuPage from "./MenuPage";
 import OrderReviewPage from "./OrderReviewPage";
+import "../Styling/General.css";
 
 import OrderReviewContext from "../Components/OrderReviewContext";
 import "../Styling/General.css";
