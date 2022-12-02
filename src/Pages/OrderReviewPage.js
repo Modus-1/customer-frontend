@@ -122,63 +122,58 @@ function OrderReviewPage() {
   }
 
   return (
-    <div>
-      <ResponsiveAppBar />
-      <div className="rv-main-contents">
-        <div className="rv-order-review-container">
-          <h3>
-            <strong>Bevestig order</strong>
-          </h3>
-          <div className="rv-all-orders-items-container">
-            {order.orderItems?.map((item, index) => (
-              <OrderItemCard
-                key={index}
-                item={item}
-                add={() => add(item.id)}
-                subtract={() => subtract(item.id)}
-              />
-            ))}
-          </div>
-          <Popup
-            trigger={
-              <div className="rv-add-commment-btn">
-                {note.length < 1 && <div>Opmerking toevoegen</div>}
-                {note.length > 0 && <div>Opmerking zien/wijzigen</div>}
-              </div>
-            }
-            modal
-          >
-            {(close) => (
-              <div className="rv-add-commment-container">
-                <textarea
-                  value={unacceptedNote}
-                  onChange={(event) => {
-                    setUnacceptedNote(event.target.value);
+    <div className="rv-main-content">
+      <div className="rv-topbar">
+        <p>Review order</p>
+      </div>
+      <div className="rv-order-container">
+        {order.orderItems?.map((item, index) => (
+          <OrderItemCard
+            className="rv-orderitem"
+            key={index}
+            item={item}
+            add={() => add(item.id)}
+            subtract={() => subtract(item.id)}
+          />
+        ))}
+        <Popup
+          trigger={
+            <div className="rv-add-commment-btn">
+              {note.length < 1 && <div>Opmerking toevoegen</div>}
+              {note.length > 0 && <div>Opmerking zien/wijzigen</div>}
+            </div>
+          }
+          modal
+        >
+          {(close) => (
+            <div className="rv-add-commment-container">
+              <textarea
+                value={unacceptedNote}
+                onChange={(event) => {
+                  setUnacceptedNote(event.target.value);
+                }}
+                className="rv-order-commment-input"
+              ></textarea>
+              <div>
+                <button
+                  onClick={() => {
+                    setNote(unacceptedNote);
+                    close();
                   }}
-                  className="rv-order-commment-input"
-                ></textarea>
-                <div>
-                  <button
-                    onClick={() => {
-                      setNote(unacceptedNote);
-                      close();
-                    }}
-                  >
-                    Bevestig
-                  </button>
-                  <button
-                    onClick={() => {
-                      close();
-                    }}
-                  >
-                    Annuleer
-                  </button>
-                </div>
+                >
+                  Bevestig
+                </button>
+                <button
+                  onClick={() => {
+                    close();
+                  }}
+                >
+                  Annuleer
+                </button>
               </div>
-            )}
-          </Popup>
-          <button className="rv-order-pay-btn">Betalen</button>
-        </div>
+            </div>
+          )}
+        </Popup>
       </div>
     </div>
   );

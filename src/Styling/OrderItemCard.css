@@ -3,10 +3,12 @@
   display: flex;
   flex-direction: row;
   height: var(--order-card-height);
+  margin: 0.2em;
 }
 
 .rv-order-name {
-  width: calc(50%);
+  width: calc(40%);
+  min-width: calc(45%);
   display: flex;
   align-items: center;
 }
@@ -17,6 +19,7 @@
   width: calc(50% - 2 * var(--card-padding));
   display: flex;
   align-items: center;
+  justify-content: right;
   flex-direction: row;
   padding: 0 var(--card-padding) 0 var(--card-padding);
   gap: 0.25em;
@@ -32,6 +35,7 @@
 .rv-order-details-amount {
   min-width: 1em;
   text-align: center;
+  align-self: center;
 }
 
 .rv-order-details-btn {
