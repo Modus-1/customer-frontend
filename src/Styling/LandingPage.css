@@ -20,7 +20,7 @@
   align-items: center;
   color: white;
   font-weight: 400;
-  font-size: 64px;
+  font-size: 6vmax;
 }
 
 .info {
@@ -31,7 +31,7 @@
   text-align: center;
   color: white;
   font-weight: 400;
-  font-size: 21px;
+  font-size: 4vmax;
 }
 
 .session-code-container {
@@ -51,9 +51,10 @@
 
 .session-code-input {
   display: flex;
-  width: 40%;
+  width: 5em;
   height: 1.5em;
   align-content: center;
+  text-align: center;
   border: 0;
   border-radius: 0.25em;
 }
@@ -71,8 +72,9 @@
 
 .session-code-button {
   display: flex;
-  background-color: white;
-  width: 30%;
+  background-color: whitesmoke;
+  width: 4em;
+  height: 1.65em;
   justify-content: center;
   align-items: center;
   border: 0;
