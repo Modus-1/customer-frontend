@@ -6,6 +6,7 @@ import OrderReviewPage from "./OrderReviewPage";
 import "../Styling/General.css";
 
 import OrderReviewContext from "../Components/OrderReviewContext";
+import "../Styling/General.css";
 
 function RouterPage() {
   return (
