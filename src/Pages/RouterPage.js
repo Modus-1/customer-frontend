@@ -5,6 +5,7 @@ import MenuPage from "./MenuPage";
 import OrderReviewPage from "./OrderReviewPage";
 
 import OrderReviewContext from "../Components/OrderReviewContext";
+import "../Styling/General.css";
 
 function RouterPage() {
   return (
