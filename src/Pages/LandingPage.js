@@ -1,9 +1,12 @@
 import "../Styling/LandingPage.css";
 import LandingPageLoginButton from "../Components/LandingPageLoginButton";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { TextField } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 function LandingPage() {
+  const navigate = useNavigate();
+  const [inputVal, setInputVal] = useState("");
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const tableNumber = urlParams.get("tableNumber");
@@ -28,10 +31,21 @@ function LandingPage() {
       <div className="info">Ask the host for the session code.</div>
       <div className="session-code-container">
         <div className="session-code-input-container">
-          <input className="session-code-input"></input>
+          <input
+            className="session-code-input"
+            maxLength={4}
+            value={inputVal}
+            onChange={(e) => setInputVal(e.target.value.replace(/\D/, ""))}
+          />
         </div>
         <div className="session-code-button-container">
-          <button className="session-code-button">Log in</button>
+          <button
+            className="session-code-button"
+            onClick={() => navigate("/Menu")}
+            disabled={!inputVal}
+          >
+            Log in
+          </button>
         </div>
       </div>
     </div>

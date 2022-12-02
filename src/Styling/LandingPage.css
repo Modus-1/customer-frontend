@@ -39,7 +39,7 @@
   flex-direction: row;
   height: 30vh;
   margin-inline: 5px;
-  gap: 1em;
+  gap: 1vmax;
 }
 
 .session-code-input-container {
@@ -51,10 +51,11 @@
 
 .session-code-input {
   display: flex;
-  width: 5em;
-  height: 1.5em;
+  width: 4em;
+  height: 3vmax;
   align-content: center;
   text-align: center;
+  font-size: 2vmax;
   border: 0;
   border-radius: 0.25em;
 }
@@ -74,9 +75,10 @@
   display: flex;
   background-color: whitesmoke;
   width: 4em;
-  height: 1.65em;
+  height: 3vmax;
   justify-content: center;
   align-items: center;
+  font-size: 2vmax;
   border: 0;
   border-radius: 0.25em;
 }
