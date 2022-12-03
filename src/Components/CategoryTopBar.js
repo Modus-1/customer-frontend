@@ -7,14 +7,16 @@ function CategoryTopBar(filtermethod) {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    GetAllCategories();
+    SetAllCategories();
   }, []);
 
-  async function GetAllCategories() {
-    let catstuff = await getAllCategories();
+  async function SetAllCategories() {
+    const allItemsCategory = [{id: '0', name: 'All'}];
+    const getCategories = await getAllCategories()
+    const combinedCategories = allItemsCategory.concat(getCategories);
 
-    if (catstuff.length !== 0) {
-      setCategories(catstuff);
+    if (combinedCategories.length !== 0) {
+      setCategories(combinedCategories);
     }
   }
 

@@ -97,13 +97,13 @@
     margin-bottom: 5px;
     padding: 0;
     color: white;
-    transition-duration: 50ms;
+    transition-duration: 20ms;
 
 }
 
 .add-btn:active {
     cursor: pointer;
-    background-color: var(--card-background-color);
+    background-color: var(--accent-color-dark);
 }
 
 .price {

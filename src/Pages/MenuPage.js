@@ -43,10 +43,6 @@ function MenuPage() {
       setActiveFilter("");
       return;
     }
-    if (activeFilter === filter) {
-      setActiveFilter("");
-      return;
-    }
     setActiveFilter(filter);
   }
 

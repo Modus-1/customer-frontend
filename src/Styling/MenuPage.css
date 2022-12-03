@@ -26,6 +26,7 @@
 
 }
 .basket-image-container {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,6 +37,20 @@
   height: 60%;
   aspect-ratio: 1;
   filter:invert(100%)
+}
+.basket-amount{
+
+  width: 20px;
+  text-align: center;
+  position: absolute;
+  right: 0px;
+  top: 5px;
+  background-color: white;
+  border-radius: 100%;
+  padding: 2px;
+  font-size:small;
+  color: var(--accent-color);
+  font-weight: bold;
 }
 
 .menupage-footer-button-container{
@@ -50,10 +65,11 @@
   border:none;
   outline: none;
   background-color: var(--accent-color);
+  color: white;
+  font-weight: bold;
+  font-size: large
 }
-.menupage-footer-button-container button:active{
-  background-color: ;
-}
+
 
 .space {
   height: 40px;
