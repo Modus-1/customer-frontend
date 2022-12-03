@@ -91,7 +91,6 @@
     width: calc(100% - 20px);
 
     font-size: 1.5em;
-    border-radius: 0.1em;
     background-color: var(--accent-color);
     border-radius: var(--card-radius);
     margin-bottom: 5px;

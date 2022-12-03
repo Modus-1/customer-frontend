@@ -12,11 +12,10 @@
   background-color: var(--accent-color);
   color: white;
   border: none;
-  border-radius: 0.25em;
   margin-right: 10px;
   cursor: pointer;
   border-radius:20px;
-  min-width:15vh;
+  min-width:18vh;
   font-size: large;
 
   padding:8px;
