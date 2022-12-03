@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../Styling/MenuPage.css";
 import CategoryTopBar from "../Components/CategoryTopBar";
 import MenuItem from "../Components/MenuItem";
-import { getAllMenuItems } from "../Components/Services";
+import { getAllMenuItems } from "../Components/services/MenuServices";
 import { CheckoutContext } from "../Components/OrderReviewContext";
 
 function MenuPage() {

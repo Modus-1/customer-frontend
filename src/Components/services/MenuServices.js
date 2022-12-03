@@ -1,5 +1,6 @@
 import axios from "axios";
 
+// Menu API
 async function getAllMenuItems() {
   const response = await axios.get("/api/menu/MenuItem");
   return response.data;
