@@ -53,10 +53,7 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
-.price{
-    max-width:30%;
-    font-weight: bold;
-}
+
 
 .card-title {
     text-align: center;
@@ -113,6 +110,6 @@
     align-items: center;
     padding-right: var(--card-padding);
     font-size: 0.9em;
-
-
+    max-width:30%;
+    font-weight: bold;
 }
