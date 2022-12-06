@@ -2,6 +2,7 @@ import "../Styling/LandingPage.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getSession } from "../Components/services/GatewayServices";
+import Cookies from 'js-cookie';
 
 function LandingPage() {
   const navigate = useNavigate();
@@ -9,14 +10,18 @@ function LandingPage() {
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const tableNumber = urlParams.get("tableNumber");
+    const maxTableNumber = 10;
     const number = Number.parseInt(tableNumber);
-    console.log(number);
+    const sessionCookie = Cookies.get('session');
 
-    getSession(number).then((response) => {
-      if (response.status === 200) {
-        navigate("/Menu");
-      } 
-    });
+    console.log(sessionCookie);
+    
+    if (number == null || number <= 0 || number > maxTableNumber) {
+      navigate("/Error");
+    } else if (sessionCookie == null) {
+      getSession(number);
+      navigate("/Menu");
+    }
 
     //1 check if session exists for tableNumber
     // make request to gateway to check for session related to tableNumber
