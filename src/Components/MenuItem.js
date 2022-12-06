@@ -15,20 +15,27 @@ function MenuItem(dish) {
       <div className="card-image">
         <img src={iconUrl} alt="A short presentation of a menu item dish." />
       </div>
-      <div className="card-description">
-        <strong className="title">{name}</strong>
-        <span className="description">{shortDescription}</span>
-      </div>
-      <div className="card-controls">
-        <div className="price">
-          {Intl.NumberFormat("nl-NL", {
-            style: "currency",
-            currency: "EUR",
-          }).format(price)}
+
+      <div className="card-details-container">
+        <div className="card-title">
+          <strong className="title">{name}</strong>
         </div>
-        <button className="add-btn" onClick={AddMenuItemToOrder}>
-          &#43;
-        </button>
+        <div className="card-description">
+          <div className="short-description">
+            <span className="description">{shortDescription}</span>
+          </div>
+          <div className="price">
+            {Intl.NumberFormat("nl-NL", {
+              style: "currency",
+              currency: "EUR",
+            }).format(price)}
+          </div>
+        </div>
+        <div className="card-controls">
+          <button className="add-btn" onClick={AddMenuItemToOrder}>
+            &#43;
+          </button>
+        </div>
       </div>
     </div>
   );

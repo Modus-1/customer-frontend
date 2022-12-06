@@ -11,5 +11,7 @@ import { render, screen } from "@testing-library/react";
 
 test("The landing page displays the correct info", () => {
   render(<LandingPage />);
-  expect(screen.getByText("Welcome!")).toBeInTheDocument();
+  expect(
+    screen.getByText("Ask the host for the session code.")
+  ).toBeInTheDocument();
 });

@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: row;
     height: var(--card-height);
-    border: 1px solid rgba(0, 0, 0, .2);
+    border: 1px solid rgba(211, 136, 136, 0.2);
     background-color: var(--card-background-color);
     border-radius: var(--card-radius);
 
@@ -12,36 +12,62 @@
 .card-image {
 
     height: 100%;
-    width: var(--card-height);
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 
 }
 
 .card-image img {
 
-    height: 100%;
+    height: 80%;
     aspect-ratio: 1 / 1;
-    border-bottom-left-radius: var(--card-radius);
-    border-top-left-radius: var(--card-radius);
-
+    border-radius: var(--card-radius);
+    object-fit: cover;
 }
 
 .card-description {
-
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-grow: 1;
     padding: var(--card-padding);
     min-width: calc(100% - var(--card-height) - var(--control-width));
+    max-height: 100%;
+}
 
+.card-details-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+    flex-grow: 1;
+}
+
+.short-description {
+    width:70%;
+}
+.description {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+
+.card-title {
+    text-align: center;
 }
 
 .title {
-
     font-size: 1.25em;
-
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .card-controls {
-
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -59,17 +85,21 @@
 }
 
 .add-btn {
+    width: calc(100% - 20px);
 
-    font-size: 2em;
-    border-radius: 0.1em;
+    font-size: 1.5em;
+    background-color: var(--accent-color);
+    border-radius: var(--card-radius);
+    margin-bottom: 5px;
+    padding: 0;
+    color: white;
+    transition-duration: 20ms;
 
 }
 
-.add-btn:hover {
-
+.add-btn:active {
     cursor: pointer;
-    background-color: var(--card-background-color);
-
+    background-color: var(--accent-color-dark);
 }
 
 .price {
@@ -80,6 +110,6 @@
     align-items: center;
     padding-right: var(--card-padding);
     font-size: 0.9em;
-
-
+    max-width:30%;
+    font-weight: bold;
 }
