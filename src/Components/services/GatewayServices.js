@@ -14,14 +14,12 @@ const MODUS_SESSION_TYPE = {
 async function sessionExists(tableNumber) {
 
     if (typeof tableNumber !== 'number' || tableNumber <= 0) {
-        console.log("SUPER ERROR");
         throw new Error("Invalid table number, expected a number above 0.");
     }
 
     const response = await axios.post("/session", {"tableNumber": tableNumber});
 
-    if (response.status == 200 && response.data == true || 
-        response.status == 404 && response.data == false) {
+    if (response.status == 200 && response.data == true) {
         return response.data;
     }
 

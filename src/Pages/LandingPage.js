@@ -12,9 +12,6 @@ function LandingPage() {
     const tableNumber = urlParams.get("tableNumber");
     const maxTableNumber = 10;
     const number = Number.parseInt(tableNumber);
-    
-    console.log(number);
-    console.log(maxTableNumber);
 
     Cookies.remove('session');
 
@@ -30,28 +27,22 @@ function LandingPage() {
       return;
     } 
 
-    sessionExists(number).then((response) => {
-      console.log("No errors while getting the session bool.");
-      console.log(response);
+    await sessionExists(number).then((response) => {
       sessionExistsVar = response;
     }).catch((error) => {
-      console.log("There was an error while getting the session bool.");
-      console.log(error);
-      navigate("/Error");
+      if (error.response.status == 404 && !error.response.data) {
+        sessionExistsVar = error.response.data;
+      } else {
+        navigate("/Error");
+      }
     });
 
-    getSession(number).then((response) => {
-      console.log("No errors while getting the session.");
-      console.log(response);
-    }).catch((error) => {
-      console.log("There was an error while getting the session.");
-      console.log(error);
+    await getSession(number).then(() => {
+    }).catch(() => {
       navigate("/Error");
     })
     
-    if (!sessionExistsVar) {
-      navigate("/Menu");
-    }
+    if (!sessionExistsVar) { navigate("/Menu"); }
   }
 
   return (
