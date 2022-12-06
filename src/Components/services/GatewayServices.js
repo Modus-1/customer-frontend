@@ -19,7 +19,7 @@ async function sessionExists(tableNumber) {
 
     const response = await axios.post("/session", {"tableNumber": tableNumber});
 
-    if (response.status == 200 && response.data == true) {
+    if (response.status == 200 && response.data) {
         return response.data;
     }
 
