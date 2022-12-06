@@ -13,10 +13,8 @@ function LandingPage() {
     const maxTableNumber = 10;
     const number = Number.parseInt(tableNumber);
     const sessionCookie = Cookies.get('session');
-
-    console.log(sessionCookie);
     
-    if (number == null || number <= 0 || number > maxTableNumber) {
+    if (number == null || isNaN(number) || number <= 0 || number > maxTableNumber) {
       navigate("/Error");
     } else if (sessionCookie == null) {
       getSession(number);
