@@ -32,7 +32,7 @@ export async function AddItemsToOrder(orderid, orderitems) {
   );
 
   const response = await axios.post(
-    `https://localhost:7116/Order/{orderid}/item`,
+    `https://localhost:7116/Order/${orderid}/item`,
     bodyFormData
   );
 
