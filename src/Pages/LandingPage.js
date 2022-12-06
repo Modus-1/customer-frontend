@@ -17,12 +17,11 @@ function LandingPage() {
     if (number == null || isNaN(number) || number <= 0 || number > maxTableNumber) {
       navigate("/Error");
     } else if (sessionCookie == null) {
-      try {
-        getSession(number)
-      } catch {
+      getSession(number)(() => {
+          navigate("/Menu");
+        }).catch(() => {
         navigate("/Error");
-      }
-      navigate("/Menu");
+      });
     }
   }, []);
 
