@@ -4,6 +4,10 @@ import { React, useState, useEffect, useContext } from "react";
 import { CheckoutContext } from "../Components/OrderReviewContext";
 import { getMenuItemByID } from "../Components/services/MenuServices";
 import Popup from "reactjs-popup";
+import {
+  MakeOrder,
+  AddItemsToOrder,
+} from "../Components/services/OrderServices";
 
 class Order {
   constructor(orderItems) {
@@ -40,13 +44,6 @@ class OrderItem {
 }
 
 function OrderReviewPage() {
-  /*
-        De hoofddata moet aangepast worden door op de + en - te klikken 
-        in de OrderItemCard componenten.
-        Dit moet zichtbaar zijn in de UI wanneer er op die knoppen
-        gedrukt wordt. Dit werkt momenteel niet. 
-    */
-
   const [order, setOrder] = useState({ orderItems: [] });
   const [note, setNote] = useState("");
   const [unacceptedNote, setUnacceptedNote] = useState("");
@@ -120,6 +117,14 @@ function OrderReviewPage() {
     });
   }
 
+  async function SendOrderToApi() {
+    const orderobj = await MakeOrder(note, 0);
+    const orderid = orderobj.id;
+
+    AddItemsToOrder(orderid, order.orderItems);
+    //add items to order.
+  }
+
   return (
     <div className="rv-main-content">
       <div className="rv-topbar">
@@ -174,6 +179,7 @@ function OrderReviewPage() {
           )}
         </Popup>
       </div>
+      <button onClick={SendOrderToApi}>Finish order</button>
     </div>
   );
 }

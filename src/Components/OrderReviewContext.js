@@ -20,6 +20,16 @@ export default function OrderReviewContext(props) {
     }
   }
 
+  function GetTotalOrders(){
+    //return the amount of selected orders
+    let totalOrders = 0;
+
+    for(let i = 0; i < selectedItems.length; i++){
+      totalOrders += selectedItems[i].count;
+    }
+    return totalOrders;
+  }
+
   function SubtractItemFromOrder(dish) {
     let itemList = GetOrder();
     if (itemList != null) {
@@ -69,6 +79,7 @@ export default function OrderReviewContext(props) {
         selectedItems,
         AddMenuItemToOrder,
         SubtractItemFromOrder,
+        GetTotalOrders,
       }}
     >
       {props.children}

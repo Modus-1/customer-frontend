@@ -1,7 +1,7 @@
 .main-contents {
   background-color: transparent;
-
-  min-height: calc(100vh - var(--header-height));
+  min-height: calc(100vh - var(--header-height) - var(--footer-height) );
+  max-height: calc(100vh - var(--header-height) - var(--footer-height) );
   display: flex;
   flex-direction: column;
   margin: auto;
@@ -13,6 +13,67 @@
   flex-direction: column;
   gap: 0.5em;
   padding-top: var(--main-padding);
+}
+
+.menupage-footer {
+  display: flex;
+  flex-direction: row;
+  height: var(--footer-height);
+  width: 100vw;
+  background-color: var(--accent-color-light);
+  position: fixed;
+  bottom: 0;
+
+}
+.basket-image-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  aspect-ratio: 1;
+}
+.basket-image-container img{
+  height: 60%;
+  aspect-ratio: 1;
+  filter:invert(100%)
+}
+.basket-amount{
+
+  width: 20px;
+  text-align: center;
+  position: absolute;
+  right: 0px;
+  top: 5px;
+  background-color: white;
+  border-radius: 100%;
+  padding: 2px;
+  font-size:small;
+  color: var(--accent-color);
+  font-weight: bold;
+}
+
+.menupage-footer-button-container{
+  display: flex;
+  flex-grow: 1;
+}
+
+.menupage-footer-button-container button{
+  flex-grow: 1;
+  margin: 5px;
+  border-radius: var(--card-radius);
+  border:none;
+  outline: none;
+  background-color: var(--accent-color);
+  color: white;
+  font-weight: bold;
+  font-size: large
+}
+
+
+.space {
+  height: 40px;
+  width: 100%;
 }
 
 @media only screen and (min-width: 600px) {
