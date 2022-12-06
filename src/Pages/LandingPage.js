@@ -17,21 +17,13 @@ function LandingPage() {
     if (number == null || isNaN(number) || number <= 0 || number > maxTableNumber) {
       navigate("/Error");
     } else if (sessionCookie == null) {
-      getSession(number);
+      try {
+        getSession(number)
+      } catch {
+        navigate("/Error");
+      }
       navigate("/Menu");
     }
-
-    //1 check if session exists for tableNumber
-    // make request to gateway to check for session related to tableNumber
-
-    //2 if session does not exist, redirect to menu page and create session
-    // get response from gateway whether the session exists
-    // yes? -> 3
-    // no? -> redirect to menu page and create session -> gateway session
-
-    //3 if session exists, do not redirect to menu page and wait for user to login
-    // enter passcode and verify in gateway
-    // correct passcode? -> join session and redirect to menu page :)
   }, []);
 
   return (
