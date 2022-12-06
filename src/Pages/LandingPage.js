@@ -1,7 +1,7 @@
 import "../Styling/LandingPage.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getSession } from "../Components/services/GatewayServices";
+import { sessionExists, getSession } from "../Components/services/GatewayServices";
 import Cookies from 'js-cookie';
 
 function LandingPage() {
@@ -12,18 +12,47 @@ function LandingPage() {
     const tableNumber = urlParams.get("tableNumber");
     const maxTableNumber = 10;
     const number = Number.parseInt(tableNumber);
-    const sessionCookie = Cookies.get('session');
     
+    console.log(number);
+    console.log(maxTableNumber);
+
+    Cookies.remove('session');
+
+    navigateToPage(number, maxTableNumber);
+  }, []);
+
+  async function navigateToPage(number, maxTableNumber) {
+
+    let sessionExistsVar;
+
     if (number == null || isNaN(number) || number <= 0 || number > maxTableNumber) {
       navigate("/Error");
-    } else if (sessionCookie == null) {
-      getSession(number)(() => {
-          navigate("/Menu");
-        }).catch(() => {
-        navigate("/Error");
-      });
+      return;
+    } 
+
+    sessionExists(number).then((response) => {
+      console.log("No errors while getting the session bool.");
+      console.log(response);
+      sessionExistsVar = response;
+    }).catch((error) => {
+      console.log("There was an error while getting the session bool.");
+      console.log(error);
+      navigate("/Error");
+    });
+
+    getSession(number).then((response) => {
+      console.log("No errors while getting the session.");
+      console.log(response);
+    }).catch((error) => {
+      console.log("There was an error while getting the session.");
+      console.log(error);
+      navigate("/Error");
+    })
+    
+    if (!sessionExistsVar) {
+      navigate("/Menu");
     }
-  }, []);
+  }
 
   return (
     <div className="lp-main-contents">

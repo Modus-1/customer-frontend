@@ -8,6 +8,26 @@ const MODUS_SESSION_TYPE = {
 };
 
 /**
+ * Gets a boolean from the Gateway indicating whether a session belonging to a table has already been created or not.
+ * @param {Number} tableNumber The tableNumber to get the boolean for.
+ */
+async function sessionExists(tableNumber) {
+
+    if (typeof tableNumber !== 'number' || tableNumber <= 0) {
+        throw new Error("Invalid table number, expected a number above 0.");
+    }
+
+    const response = await axios.get("/session", {"tableNumber": tableNumber});
+
+    if (response.status == 200 && response.data == true || 
+        response.status == 404 && response.data == false) {
+        return response.data;
+    }
+
+    throw new Error(response.data);
+}
+
+/**
  * Gets a session from the Gateway that is linked to the tableNumber and/or session cookie.
  * @param {MODUS_SESSION_TYPE} type The access type requested.
  * @param {Number} tableNumber The tableNumber to get the session for.
@@ -36,4 +56,4 @@ async function getSession(tableNumber, type = MODUS_SESSION_TYPE.USER) {
     throw new Error(response.data);
 }
 
-export { getSession, MODUS_SESSION_TYPE };
+export { sessionExists, getSession, MODUS_SESSION_TYPE };
