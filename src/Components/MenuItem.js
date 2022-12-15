@@ -15,11 +15,11 @@ function MenuItem(dish) {
   return (
     <div className="menu-card" data-testid={`mItem-${id}`}>
       <div className="card-image">
-        <img src={iconUrl} alt="A short presentation of a menu item dish." />
+        <img onClick={()=>setIsMoreInfoOpen(true)} src={iconUrl} alt="A short presentation of a menu item dish." />
       </div>
 
       <div className="card-details-container">
-        <div className="card-title">
+        <div onClick={()=>setIsMoreInfoOpen(true)} className="card-title">
           <strong className="title">{name}</strong>
         </div>
         <div className="card-description">
@@ -39,7 +39,7 @@ function MenuItem(dish) {
           </button>
         </div>
       </div>
-      <MenuItemInfoPopup dish={dish.dish} isOpen={isMoreInfoOpen} setOpen={setIsMoreInfoOpen} />
+      <MenuItemInfoPopup dish={dish.dish} isOpen={isMoreInfoOpen} setOpen={setIsMoreInfoOpen}  addToOrder={AddMenuItemToOrder}/>
     </div>
   );
 }
