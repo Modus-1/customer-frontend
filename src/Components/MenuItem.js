@@ -14,8 +14,7 @@ function MenuItem(dish) {
   async function AddMenuItemToOrder() {
     addMenuItem(dish.dish);
     setIsAddMenuItemPopupOpen(true);
-    console.log("here is the popup id: " + popupId); //animation when adding menu item to order
-    await new Promise((r) => setTimeout(r, 10));
+    await new Promise((r) => setTimeout(r, 10)); //animation when adding menu item to order
     document.getElementById(popupId).style.translate = "0px 0px";
     document.getElementById(popupId).style.filter = "opacity(100%)";
     await new Promise((r) => setTimeout(r, 1000));
