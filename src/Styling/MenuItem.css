@@ -193,7 +193,7 @@
 .menu-item-info-popup-details-container {
     display: flex;
     flex-direction: column;
-    padding: 10px;
+    padding: 20px;
     height: 100%;
 }
 
@@ -218,6 +218,7 @@
     font-family: "Raleway", sans-serif;
     font-style: normal;
     font-weight: bold;
+    margin-inline: -5px;
 }
 
 .menu-item-info-popup-description {
@@ -251,7 +252,7 @@
 .menu-item-info-popup-allergens-list-item {
     font-weight: bold;
     list-style-type: square;
-    /* font-size: 1.1em; */
+    font-size: 1.1em;
 }
 
 .menu-item-info-popup-allergens {
