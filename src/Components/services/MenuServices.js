@@ -16,4 +16,9 @@ async function getAllCategories() {
   return response.data;
 }
 
-export { getAllMenuItems, getMenuItemByID, getAllCategories };
+async function getIngredientByID(id) {
+  const response = await axios.get("/api/menu/api/Ingredient/" + id);
+  return response.data;
+}
+
+export { getAllMenuItems, getMenuItemByID, getAllCategories,getIngredientByID };

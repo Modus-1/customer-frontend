@@ -1,4 +1,5 @@
 import "../Styling/OrderItemCard.css";
+import MenuItemInfoPopup from "./MenuItemInfoPopup";
 
 function OrderItemCard(orderItem) {
   return (
