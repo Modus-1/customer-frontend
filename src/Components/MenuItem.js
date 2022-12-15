@@ -1,9 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "../Styling/MenuItem.css";
 import { CheckoutContext } from "../Components/OrderReviewContext";
+import MenuItemInfoPopup from "../Components/MenuItemInfoPopup";
 
 function MenuItem(dish) {
   const addMenuItem = useContext(CheckoutContext).AddMenuItemToOrder;
+  const [isMoreInfoOpen, setIsMoreInfoOpen] = useState(false);
 
   function AddMenuItemToOrder() {
     addMenuItem(dish.dish);
@@ -37,6 +39,7 @@ function MenuItem(dish) {
           </button>
         </div>
       </div>
+      <MenuItemInfoPopup dish={dish.dish} isOpen={isMoreInfoOpen} setOpen={setIsMoreInfoOpen} />
     </div>
   );
 }
