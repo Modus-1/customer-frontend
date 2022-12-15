@@ -4,7 +4,6 @@ import { getIngredientByID } from './services/MenuServices';
 
 export default function MenuItemInfoPopup(props) {
     const dish = props.dish;
-    console.log(dish);
     const [ingredients, setIngredients] = useState([]);
 
     useEffect (() => {
@@ -14,7 +13,6 @@ export default function MenuItemInfoPopup(props) {
             });
             Promise.all(promises).then((results) => {
                 setIngredients(results);
-                console.log(results);
             });
         }
     }, [props.dish, props.isOpen]);
