@@ -50,6 +50,7 @@ function OrderReviewPage() {
   const [order, setOrder] = useState({ orderItems: [] });
   const [note, setNote] = useState("");
   const [unacceptedNote, setUnacceptedNote] = useState("");
+  const [totalPrice, setTotalPrice] = useState(0);
   const selectedItemIds = useContext(CheckoutContext).selectedItems;
   const AddMenuItemToOrder = useContext(CheckoutContext).AddMenuItemToOrder;
   const SubtractItemFromOrder =
@@ -102,6 +103,11 @@ function OrderReviewPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedItemIds]);
 
+  useEffect(() => {
+    UpdatePrice();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [order.orderItems]);
+
   function add(id) {
     order.orderItems.map((item) => {
       if (item.id === id) {
@@ -127,13 +133,6 @@ function OrderReviewPage() {
     AddItemsToOrder(orderid, order.orderItems);
     //add items to order.
   }
-
-  const [totalPrice, setTotalPrice] = useState(0);
-
-  useEffect(() => {
-    UpdatePrice();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [order.orderItems]);
 
   async function UpdatePrice() {
     let totalPrice = 0;
