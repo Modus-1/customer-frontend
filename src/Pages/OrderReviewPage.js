@@ -3,11 +3,13 @@ import OrderItemCard from "../Components/OrderItemCard";
 import { React, useState, useEffect, useContext } from "react";
 import { CheckoutContext } from "../Components/OrderReviewContext";
 import { getMenuItemByID } from "../Components/services/MenuServices";
+import back_arrow_navigation from "../images/back-arrow-navigation.svg";
 import Popup from "reactjs-popup";
 import {
   MakeOrder,
   AddItemsToOrder,
 } from "../Components/services/OrderServices";
+import { useNavigate } from "react-router-dom";
 
 class Order {
   constructor(orderItems) {
@@ -44,6 +46,7 @@ class OrderItem {
 }
 
 function OrderReviewPage() {
+  const navigate = useNavigate();
   const [order, setOrder] = useState({ orderItems: [] });
   const [note, setNote] = useState("");
   const [unacceptedNote, setUnacceptedNote] = useState("");
@@ -92,7 +95,7 @@ function OrderReviewPage() {
         }
         return null;
       });
-
+      UpdatePrice();
       setOrder({ orderItems: tempOrder.orderItems });
     }
 
@@ -125,61 +128,96 @@ function OrderReviewPage() {
     //add items to order.
   }
 
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  useEffect(() => {
+    UpdatePrice();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [order.orderItems]);
+
+  async function UpdatePrice() {
+    let totalPrice = 0;
+    order.orderItems.forEach((item) => {
+      totalPrice += item.totalPrice;
+    });
+    setTotalPrice(totalPrice);
+  }
+
   return (
     <div className="rv-main-content">
       <div className="rv-topbar">
-        <p>Review order</p>
+        <img
+          className="rv-back-arrow-navigation"
+          src={back_arrow_navigation}
+          onClick={() => navigate("/Menu")}
+        ></img>
+        <div className="rv-topbar-label">Review order</div>
       </div>
       <div className="rv-order-container">
-        {order.orderItems?.map((item, index) => (
-          <OrderItemCard
-            className="rv-orderitem"
-            key={index}
-            item={item}
-            add={() => add(item.id)}
-            subtract={() => subtract(item.id)}
-          />
-        ))}
-        <Popup
-          trigger={
-            <div className="rv-add-commment-btn">
-              {note.length < 1 && <div>Opmerking toevoegen</div>}
-              {note.length > 0 && <div>Opmerking zien/wijzigen</div>}
+        <div className="rv-order-items-container">
+          {order.orderItems?.map((item, index) => (
+            <OrderItemCard
+              className="rv-orderitem"
+              key={index}
+              item={item}
+              add={() => add(item.id)}
+              subtract={() => subtract(item.id)}
+            />
+          ))}
+        </div>
+        <div className="rv-order-total-price-payment-container">
+          <div className="rv-order-total-price-container">
+            <div className="rv-order-total-price-label">Total (incl. VAT)</div>
+            <div className="rv-order-tota-price-amount">
+              {Intl.NumberFormat("nl-NL", {
+                style: "currency",
+                currency: "EUR",
+              }).format(totalPrice)}
             </div>
-          }
-          modal
-        >
-          {(close) => (
-            <div className="rv-add-commment-container">
-              <textarea
-                value={unacceptedNote}
-                onChange={(event) => {
-                  setUnacceptedNote(event.target.value);
-                }}
-                className="rv-order-commment-input"
-              ></textarea>
-              <div>
-                <button
-                  onClick={() => {
-                    setNote(unacceptedNote);
-                    close();
-                  }}
-                >
-                  Bevestig
-                </button>
-                <button
-                  onClick={() => {
-                    close();
-                  }}
-                >
-                  Annuleer
-                </button>
+          </div>
+          <Popup
+            trigger={
+              <div className="rv-add-commment-btn">
+                {note.length < 1 && <div>Opmerking toevoegen</div>}
+                {note.length > 0 && <div>Opmerking zien/wijzigen</div>}
               </div>
-            </div>
-          )}
-        </Popup>
+            }
+            modal
+          >
+            {(close) => (
+              <div className="rv-add-commment-container">
+                <textarea
+                  value={unacceptedNote}
+                  onChange={(event) => {
+                    setUnacceptedNote(event.target.value);
+                  }}
+                  className="rv-order-commment-input"
+                ></textarea>
+                <div>
+                  <button
+                    onClick={() => {
+                      setNote(unacceptedNote);
+                      close();
+                    }}
+                  >
+                    Bevestig
+                  </button>
+                  <button
+                    onClick={() => {
+                      close();
+                    }}
+                  >
+                    Annuleer
+                  </button>
+                </div>
+              </div>
+            )}
+          </Popup>
+          <button className="rv-order-payment-button" onClick={SendOrderToApi}>
+            Finish order
+          </button>
+        </div>
       </div>
-      <button onClick={SendOrderToApi}>Finish order</button>
     </div>
   );
 }
