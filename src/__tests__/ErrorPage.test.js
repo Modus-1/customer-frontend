@@ -5,7 +5,6 @@ import { render, screen } from "@testing-library/react";
 
 test("The error page gives an error message", () => {
   render(<ErrorPage />);
-  expect(
-    screen.getByText("Nah mate, it broke. Idk what to tell ya")
-  ).toBeInTheDocument();
+  let messageelement = screen.getByTestId("ep-message");
+  expect(messageelement).toBeInTheDocument();
 });
