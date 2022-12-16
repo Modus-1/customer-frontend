@@ -1,7 +1,11 @@
 import "../Styling/ErrorPage.css";
 function ErrorPage() {
   return (
-    <div className="ErrorMessage">Nah mate, it broke. Idk what to tell ya</div>
+    <div className="ep-main-content">
+      <div className="ErrorMessage">
+        That link does not appear to be valid, please contact the staff
+      </div>
+    </div>
   );
 }
 
