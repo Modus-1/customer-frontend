@@ -35,6 +35,4 @@ export async function AddItemsToOrder(orderid, orderitems) {
     `https://localhost:7116/Order/${orderid}/item`,
     bodyFormData
   );
-
-  console.log(response);
 }

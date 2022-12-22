@@ -6,11 +6,9 @@ import RouterPage from "./Pages/RouterPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <RouterPage />
-    </BrowserRouter>
-  </React.StrictMode>
+  <BrowserRouter>
+    <RouterPage />
+  </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function
