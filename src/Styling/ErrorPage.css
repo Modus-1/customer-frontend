@@ -1,6 +1,23 @@
+.ep-main-content {
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(
+    180deg,
+    #499ae6 0%,
+    #499ae5 73.23%,
+    rgba(255, 255, 255, 0.93) 100%
+  );
+}
+
 .ErrorMessage {
-  font-family: "Comic Sans MS", sans-serif;
   text-align: center;
+  justify-content: center;
   font-size: larger;
   margin: auto;
+  color: white;
 }
