@@ -14,7 +14,7 @@ export async function MakeOrder(ordernote, totalPrice) {
   };
 
   const response = await axios.post(
-    "https://localhost:7116/Order/create/",
+    "http://localhost:9002/Order/create/",
     bodyFormData,
     customConfig
   );
@@ -32,7 +32,7 @@ export async function AddItemsToOrder(orderid, orderitems) {
   );
 
   const response = await axios.post(
-    `https://localhost:7116/Order/${orderid}/item`,
+    `http://localhost:9002/Order/${orderid}/item`,
     bodyFormData
   );
 }
