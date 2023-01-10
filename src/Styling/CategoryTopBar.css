@@ -1,0 +1,31 @@
+.tb-main-content {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+  background-color: var(--accent-color-light);
+  color: white;
+  max-width: 100vw;
+  overflow-x:auto;
+}
+
+.tb-category {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  margin-right: 10px;
+  cursor: pointer;
+  border-radius:20px;
+  min-width:18vh;
+  font-size: large;
+
+  padding:8px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+
+.tb-category:hover,
+.tb-category:active {
+  background-color: var(--accent-color-dark);
+  color: white;
+}

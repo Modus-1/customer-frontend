@@ -1,14 +1,35 @@
+:root {
+  --accent-color: rgb(23, 143, 255);
+  --accent-color-light: rgb(89, 174, 254);
+  --accent-color-dark: rgb(26, 115, 198);
+  --text-color: black;
+  --bg-color: white;
+  --header-height: 3em;
+  --main-padding: 1em;
+  --gray: rgba(0, 0, 0, 0.1);
+  --dark-gray: rgba(0, 0, 0, 0.15);
+
+  --card-height: 9em;
+  --card-padding: 0.5em;
+  --card-radius: 10px;
+  --control-width: 5em;
+
+  --card-background-color: rgba(0, 0, 0, 0.05);
+
+  --footer-height: 2.5em;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-
+  color: var(--text-color);
+  background-color: var(--bg-color);
 }
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }

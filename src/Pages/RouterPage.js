@@ -3,19 +3,25 @@ import LandingPage from "./LandingPage";
 import ErrorPage from "./ErrorPage";
 import MenuPage from "./MenuPage";
 import OrderReviewPage from "./OrderReviewPage";
+import "../Styling/General.css";
+
+import OrderReviewContext from "../Components/OrderReviewContext";
+import "../Styling/General.css";
 
 function RouterPage() {
   return (
     <div>
-      <Routes>
-        <Route path="/" element=<LandingPage />></Route>
-        <Route path="/Home" element=<LandingPage />></Route>
-        <Route path="/LandingPage" element=<LandingPage />></Route>
-        <Route path="/Error" element=<ErrorPage />></Route>
-        <Route path="/Menu" element={<MenuPage />}></Route>
-        <Route path='/review' element=<OrderReviewPage />></Route>
-        <Route path="*" element=<ErrorPage />></Route>
-      </Routes>
+      <OrderReviewContext>
+        <Routes>
+          <Route path="/" element={<LandingPage />}></Route>
+          <Route path="/Home" element={<LandingPage />}></Route>
+          <Route path="/LandingPage" element={<LandingPage />}></Route>
+          <Route path="/Error" element={<ErrorPage />}></Route>
+          <Route path="/Menu" element={<MenuPage />}></Route>
+          <Route path="/review" element={<OrderReviewPage />}></Route>
+          <Route path="*" element={<ErrorPage />}></Route>
+        </Routes>
+      </OrderReviewContext>
     </div>
   );
 }

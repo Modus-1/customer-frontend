@@ -1,70 +1,111 @@
 :root {
-    --blue: rgb(14, 154, 230);
-    --header-height: 3em;
-    --main-padding: 1em;
-    --order-card-height: 2em;
-    --card-padding: 0.5em;
+  --ComponentBackgroundBlue: #2b85d9;
+  --ComponentBackgroundGrey: #d9d9d9;
+  --TopbarHeight: 50px;
 }
 
-.rv-main-contents {
-
-    background-color: white;
-
-    min-height: calc(100vh - var(--header-height));
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    padding: 0 var(--main-padding) 0 var(--main-padding);
-
+.rv-main-content {
+  display: flex;
+  flex-direction: column;
 }
 
-.rv-header {
-
-    background-color: var(--blue);
-    
-    width: 100%;
-    height: var(--header-height);
-
+.rv-topbar {
+  display: flex;
+  height: var(--TopbarHeight);
+  background-color: var(--ComponentBackgroundBlue);
 }
 
-.rv-order-review-container {
-
-    min-height: calc(100% - var(--header-height));    
-    display: flex;
-    flex-direction: column;
-
+.rv-topbar-label {
+  display: flex;
+  font-size: 21px;
+  margin: auto;
+  padding-right: var(--TopbarHeight);
+  text-align: center;
+  color: whitesmoke;
 }
 
-
-.rv-all-orders-items-container {
-
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 0.25em
-
+.rv-back-arrow-navigation {
+  height: 60%;
+  padding: calc(0.5 * (0.4 * var(--TopbarHeight)));
+  color: whitesmoke;
 }
 
-.rv-order-pay-btn {
-
-    background-color: transparent;
-    border: 2px solid var(--blue);
-    color: var(--blue);
-
-    width: 100%;
-    height: 2em;
-
-    align-self: flex-end;
+.rv-order-container {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - var(--TopbarHeight));
 }
 
+.rv-order-items-container {
+  margin: 0.75em;
+  height: fit-content;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border-radius: 10px;
+  background-color: var(--ComponentBackgroundGrey);
+}
 
+.rv-add-commment-btn {
+  text-decoration: underline;
+  cursor: pointer;
+  color: var(--accent-color);
+  width: fit-content;
 
-@media only screen and (min-width: 600px) {
+  margin-bottom: 0.5em;
+  margin-left: 0.75em;
+}
 
-    .rv-main-contents {
-        width: 50%;
-        border-left: 1px solid black;
-        border-right: 1px solid black;
-    }
-    
+.rv-order-commment-input {
+  width: 80vw;
+  height: 30vh;
+  outline: none;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.rv-add-commment-container {
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 0px 100000px;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+}
+
+.rv-order-total-price-payment-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+  margin-inline: 0.75em;
+  margin-bottom: 0.5em;
+  height: fit-content;
+  border-radius: 10px;
+  background-color: var(--ComponentBackgroundGrey);
+}
+
+.rv-order-total-price-container {
+  display: flex;
+  flex-direction: row;
+  margin: 0.75em;
+  height: fit-content;
+}
+
+.rv-order-total-price-label {
+  display: flex;
+  align-items: center;
+}
+
+.rv-order-tota-price-amount {
+  display: flex;
+  margin-left: auto;
+  align-items: center;
+  justify-content: right;
+}
+
+.rv-order-payment-button {
+  margin: 0.75em;
+  padding: 0.5em;
+  border: none;
+  border-radius: 100px;
+  color: whitesmoke;
+  font-size: 1.1em;
+  background-color: var(--ComponentBackgroundBlue);
 }
