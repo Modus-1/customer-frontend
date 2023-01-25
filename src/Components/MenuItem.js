@@ -66,7 +66,7 @@ function MenuItem(dish) {
             </div>
             </div>
         </div>
-      </Popup>q
+      </Popup>
     </div>
   );
 }
